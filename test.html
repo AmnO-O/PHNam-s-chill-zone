@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Chill Zone </title>
+        
+        <link rel="stylesheet" href="style.css">
+
+        <style>
+            /* Màu Light Mode */
+            :root {
+            --bg-color: #013d5a;
+            --text-color: #333333;
+            }
+
+            /* Màu Dark Mode */
+            body.dark-mode {
+            --bg-color: #1e1e1e;
+            --text-color: #f0f0f0;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                font-family:  Arial, sans-serif;
+            }
+
+            .container {
+                display: flex;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <div class = "container"> 
+            <aside class = "side-left"> 
+
+                <!-- contain image of user and name -->
+            
+                <div class="user-info">
+                    <img src="images/hcmus_avatar.jpg" class="user-avatar" alt="Avatar của Phạm Hữu Nam">
+                    <p class="user-name" style = "font-family: 'IBM Plex Sans';">Phạm Hữu Nam</p>
+                </div>
+
+                
+                <!-- contain link to user's insta, facebook, github -->
+                <div class = "social-link">
+                    <a href = "https://www.facebook.com/pham.huu.nam.AmnOO/", target = "_blank", title = "Facebook">
+                        <img src = "images/facebook-light.png" class = "social-icon" alt = "Facebook">
+                    </a>
+
+                    <a href = "https://www.instagram.com/nam___fam/", target = "_blank", title = "Instagram">
+                        <img src = "images/instagram-light.png" class = "social-icon" alt = "Instagram">
+                    </a>       
+
+                    <a href = "https://github.com/AmnO-O", target = "_blank", title = "Github">
+                        <img src = "images/github-light.png" class = "social-icon" alt = "Github">
+                    </a>       
+                </div>
+
+                <!--  contain name section : homepage, music, blog, ... -->
+                <nav class = "content-section"> 
+                    <div class = "homepage">
+                        <div> <img src = "images/home.png" class = "content-icon"  alt="Trang chủ"> </div>
+                        <span style = "font-size: 16px; font-family: 'IBM Plex Sans';"> Home page </span>
+                    </div>
+
+                    <div class = "homepage">
+                        <div> <img src = "images/about.png" class = "content-icon"  alt="Giới thiệu"> </div>
+                        <span style = "font-size: 16px; font-family: 'IBM Plex Sans';"> About </span>
+                    </div>
+
+                    <div class = "homepage">
+                        <div> <img src = "images/music.png" class = "content-icon"  alt="Giới thiệu"> </div>
+                        <span style = "font-size: 16px; font-family: 'IBM Plex Sans';"> Music </span>
+                    </div>   
+                </nav>
+
+
+                <!-- Adjust the theme -->
+
+                <div class="theme-toggle">
+                    <img id = "themeSwitch" src = "images/on-button.png" alt = "Theme switch">
+                    <span id = "themeLable" style = "font-family: 'IBM Plex Sans'; "> Dark mode </span>
+                </div>
+
+                <script>
+                    const themeSwitch = document.getElementById('themeSwitch');
+                    const themeLabel = document.getElementById('themeLable');
+                    const body = document.body;
+
+                    themeSwitch.addEventListener('click', () => {
+                        body.classList.toggle('dark-mode');
+                        if (body.classList.contains('dark-mode')) {
+                            themeSwitch.src = 'images/off-button.png';
+                            themeLabel.textContent = 'Light mode';
+                        } else {
+                            themeSwitch.src = 'images/on-button.png';
+                            themeLabel.textContent = 'Dark mode';
+                        }
+                    });
+
+                </script>
+
+            </aside>
+
+            
+            <main class="side-right">
+                <!-- Welcome Banner -->
+                <div class="welcome-banner">
+                    <h2>Welcome to Chill Zone</h2>
+                    <p>A personal space where you can relax, listen to music, and explore creative content.</p>
+                </div>
+                
+                <!-- Music Player Section -->
+                <div class="content-block">
+                    <h2 class="section-title">Music Player</h2>
+                    <div class="music-player">
+                        <div class="music-info">
+                            <div class="music-title">Select a track</div>
+                            <div class="music-artist">-</div>
+                        </div>
+                        
+                        <div class="progress-container">
+                            <div class="progress-bar"></div>
+                        </div>
+                        
+                        <div class="player-controls">
+                            <button class="control-btn prev">⏮</button>
+                            <button class="control-btn play">▶</button>
+                            <button class="control-btn next">⏭</button>
+                        </div>
+                        
+                        <button class="bored-btn">I'm Bored! 🎵</button>
+                    </div>
+                </div>
+                
+                <!-- Blog Posts Section -->
+                <div class="content-block">
+                    <h2 class="section-title">Latest Blog Posts</h2>
+                    <div class="card-container">
+                        <div class="card">
+                            <img src="images/blog1.jpg" alt="Blog Post 1" class="card-img">
+                            <div class="card-content">
+                                <h3 class="card-title">My Journey into Web Development</h3>
+                                <p class="card-text">Sharing my experiences learning to code and build beautiful websites from scratch.</p>
+                                <a href="#" class="card-link">Read More →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <img src="images/blog2.jpg" alt="Blog Post 2" class="card-img">
+                            <div class="card-content">
+                                <h3 class="card-title">Top 10 Music Tracks This Month</h3>
+                                <p class="card-text">My personal selection of the best songs to help you focus and relax while working.</p>
+                                <a href="#" class="card-link">Read More →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <img src="images/blog3.jpg" alt="Blog Post 3" class="card-img">
+                            <div class="card-content">
+                                <h3 class="card-title">Creative Coding Projects</h3>
+                                <p class="card-text">Exploring the intersection of programming and art through interesting coding projects.</p>
+                                <a href="#" class="card-link">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Games Section -->
+                <div class="content-block">
+                    <h2 class="section-title">Games & Entertainment</h2>
+                    <div class="card-container">
+                        <div class="card">
+                            <img src="images/game1.jpg" alt="Game 1" class="card-img">
+                            <div class="card-content">
+                                <h3 class="card-title">Puzzle Challenge</h3>
+                                <p class="card-text">Test your logical thinking with this brain-teasing puzzle game.</p>
+                                <a href="#" class="card-link">Play Now →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <img src="images/game2.jpg" alt="Game 2" class="card-img">
+                            <div class="card-content">
+                                <h3 class="card-title">Adventure Quest</h3>
+                                <p class="card-text">Embark on an epic journey through magical lands and challenges.</p>
+                                <a href="#" class="card-link">Play Now →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    // Sample music data
+                    const musicList = [
+                        { 
+                            title: "Chill Vibes", 
+                            artist: "Wave Masters",
+                            url: "#"
+                        },
+                        { 
+                            title: "Study Focus", 
+                            artist: "Ambient Sounds",
+                            url: "#" 
+                        },
+                        { 
+                            title: "Deep Meditation", 
+                            artist: "Mind Retreat",
+                            url: "#" 
+                        },
+                        { 
+                            title: "Coding Session", 
+                            artist: "Productivity Beats",
+                            url: "#" 
+                        },
+                        { 
+                            title: "Relax & Unwind", 
+                            artist: "Peaceful Echoes",
+                            url: "#" 
+                        }
+                    ];
+                    
+                    let currentTrack = null;
+                    let isPlaying = false;
+                    
+                    // DOM Elements
+                    const playBtn = document.querySelector('.control-btn.play');
+                    const prevBtn = document.querySelector('.control-btn.prev');
+                    const nextBtn = document.querySelector('.control-btn.next');
+                    const boredBtn = document.querySelector('.bored-btn');
+                    const musicTitle = document.querySelector('.music-title');
+                    const musicArtist = document.querySelector('.music-artist');
+                    const progressBar = document.querySelector('.progress-bar');
+                    
+                    // Functions
+                    function playMusic(track) {
+                        currentTrack = track;
+                        musicTitle.textContent = track.title;
+                        musicArtist.textContent = track.artist;
+                        isPlaying = true;
+                        playBtn.textContent = '⏸';
+                        
+                        // In a real implementation, you would play the audio file here
+                        console.log(`Now playing: ${track.title} by ${track.artist}`);
+                        
+                        // Simulate progress for demo
+                        simulateProgress();
+                    }
+                    
+                    function pauseMusic() {
+                        isPlaying = false;
+                        playBtn.textContent = '▶';
+                        
+                        // In a real implementation, you would pause the audio here
+                        console.log('Music paused');
+                    }
+                    
+                    function getRandomTrack() {
+                        const randomIndex = Math.floor(Math.random() * musicList.length);
+                        return musicList[randomIndex];
+                    }
+                    
+                    function simulateProgress() {
+                        let width = 0;
+                        progressBar.style.width = '0%';
+                        
+                        // Clear any existing interval
+                        if (window.progressInterval) {
+                            clearInterval(window.progressInterval);
+                        }
+                        
+                        // Only run if playing
+                        if (isPlaying) {
+                            window.progressInterval = setInterval(() => {
+                                if (width >= 100) {
+                                    clearInterval(window.progressInterval);
+                                    // Auto play next track
+                                    const currentIndex = musicList.findIndex(track => track.title === currentTrack.title);
+                                    const nextIndex = (currentIndex + 1) % musicList.length;
+                                    playMusic(musicList[nextIndex]);
+                                } else {
+                                    width += 0.5;
+                                    progressBar.style.width = width + '%';
+                                }
+                            }, 200); // Update progress bar every 200ms
+                        }
+                    }
+                    
+                    // Event Listeners
+                    playBtn.addEventListener('click', () => {
+                        if (!currentTrack) {
+                            playMusic(getRandomTrack());
+                        } else if (isPlaying) {
+                            pauseMusic();
+                        } else {
+                            isPlaying = true;
+                            playBtn.textContent = '⏸';
+                            console.log(`Resuming: ${currentTrack.title}`);
+                            simulateProgress();
+                        }
+                    });
+                    
+                    prevBtn.addEventListener('click', () => {
+                        if (!currentTrack) {
+                            playMusic(getRandomTrack());
+                            return;
+                        }
+                        
+                        const currentIndex = musicList.findIndex(track => track.title === currentTrack.title);
+                        const prevIndex = (currentIndex - 1 + musicList.length) % musicList.length;
+                        playMusic(musicList[prevIndex]);
+                    });
+                    
+                    nextBtn.addEventListener('click', () => {
+                        if (!currentTrack) {
+                            playMusic(getRandomTrack());
+                            return;
+                        }
+                        
+                        const currentIndex = musicList.findIndex(track => track.title === currentTrack.title);
+                        const nextIndex = (currentIndex + 1) % musicList.length;
+                        playMusic(musicList[nextIndex]);
+                    });
+                    
+                    boredBtn.addEventListener('click', () => {
+                        playMusic(getRandomTrack());
+                    });
+                </script>
+            </main>
+        </div>
+    </body>
+</html>

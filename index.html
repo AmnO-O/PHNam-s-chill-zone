@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Chill Zone </title>
+        
+        <link rel="icon" type="image/png" sizes="32x32" href="images/hcmus_avatar.jpg">
+
+        <link rel="stylesheet" href="side-left.css">
+        <link rel="stylesheet" href="side-right.css">
+
+
+        <style>
+            /* Màu Light Mode */
+            :root {
+            --bg-color: #013d5a;
+            --text-color: #333333;
+            }
+
+            /* Màu Dark Mode */
+            body.dark-mode {
+            --bg-color: #1e1e1e;
+            --text-color: #f0f0f0;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                font-family:  Arial, sans-serif;
+            }
+
+            .container {
+                display: flex;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <div class = "container"> 
+            <aside class = "side-left"> 
+
+                <!-- contain image of user and name -->
+            
+                <div class="user-info">
+                    <img src="images/hcmus_avatar.jpg" class="user-avatar" alt="Avatar của Phạm Hữu Nam">
+                    <p class="user-name" style = "font-family: 'IBM Plex Sans';">Phạm Hữu Nam</p>
+                </div>
+
+                
+                <!-- contain link to user's insta, facebook, github -->
+                <div class = "social-link">
+                    <a href = "https://www.facebook.com/pham.huu.nam.AmnOO/", target = "_blank", title = "Facebook">
+                        <img src = "images/facebook-light.png" class = "social-icon" alt = "Facebook">
+                    </a>
+
+                    <a href = "https://www.instagram.com/nam___fam/", target = "_blank", title = "Instagram">
+                        <img src = "images/instagram-light.png" class = "social-icon" alt = "Instagram">
+                    </a>       
+
+                    <a href = "https://github.com/AmnO-O", target = "_blank", title = "Github">
+                        <img src = "images/github-light.png" class = "social-icon" alt = "Github">
+                    </a>       
+                </div>
+
+                <!--  contain name section : homepage, music, blog, ... -->
+                <nav class = "content-section"> 
+                    <div class = "homepage">
+                        <div> <img src = "images/home.png" class = "content-icon"  alt="Trang chủ"> </div>
+                        <span style = "font-size: 16px; font-family: 'IBM Plex Sans';"> Home page </span>
+                    </div>
+
+                    <div class = "homepage">
+                        <div> <img src = "images/about.png" class = "content-icon"  alt="Giới thiệu"> </div>
+                        <span style = "font-size: 16px; font-family: 'IBM Plex Sans';"> About </span>
+                    </div>
+
+                    <div class = "homepage">
+                        <div> <img src = "images/music.png" class = "content-icon"  alt="Giới thiệu"> </div>
+                        <span style = "font-size: 16px; font-family: 'IBM Plex Sans';"> Music </span>
+                    </div>   
+                </nav>
+
+
+                <!-- Adjust the theme -->
+
+                <div class="theme-toggle">
+                    <img id = "themeSwitch" src = "images/on-button.png" alt = "Theme switch">
+                    <span id = "themeLable" style = "font-family: 'IBM Plex Sans'; "> Light mode </span>
+                </div>
+
+                <script>
+                    const themeSwitch = document.getElementById('themeSwitch');
+                    const themeLabel = document.getElementById('themeLable');
+                    const body = document.body;
+
+                    themeSwitch.addEventListener('click', () => {
+                        body.classList.toggle('dark-mode');
+                        if (body.classList.contains('dark-mode')) {
+                            themeSwitch.src = 'images/off-button.png';
+                            themeLabel.textContent = 'Light mode';
+                        } else {
+                            themeSwitch.src = 'images/on-button.png';
+                            themeLabel.textContent = 'Light mode';
+                        }
+                    });
+
+                </script>
+
+            </aside>
+
+            
+            <main class="side-right">
+
+                <div class = "welcome-block">
+                    <h2> Welcome to Chill Zone </h2>
+                    <span>A personal space where you can relax, listen to music, and explore creative content.</span>
+                </div>
+
+
+                <!-- Random Music section -->
+                <div class = "content-block">
+                    <h2 class = "section-title"> Random music </h2>
+                    
+                    <div style="text-align: center; margin-bottom: 20px; ">
+                        <button id="random-music-btn" class="button-general" style="background-color: #e74c3c; font-weight: bold;">
+                            <span style=""> &#9835 </span> Open Random Music
+                        </button>
+                    </div>
+                </div>
+
+
+
+                <!--Idiom section -->
+                <div class = "content-block">
+                    <h2 class="section-title">Daily quote</h2>
+
+                    <div class="quote-container">
+                        <p class="quote-text" id="quote-text">"Actions speak louder than words."</p>
+                        <p class="quote-meaning" id="quote-meaning">What you do is more significant and meaningful than what you say you will do.</p>
+                        <button class="button-general" id="new-quote-btn"  style="background-color: #4a90e2; font-weight: bold;">Show me another idiom</button>
+                    </div>
+                </div>
+
+
+
+                <!--Blog posts section-->
+                <div class = "content-block">
+
+                </div>
+                
+
+
+                <!--Game section -->
+                <div class = "content-block">
+
+                </div>
+
+            </main>
+        </div>
+
+        
+
+        <script src = "quote.js"> </script>
+        <script src = "music.js"></script>
+
+    </body>
+</html>
+
