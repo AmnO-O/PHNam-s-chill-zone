@@ -1,0 +1,47 @@
+/* --- Carousel base --- */
+.carousel-section {
+  padding: 2rem 0;
+}
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  margin: 0 -1rem;
+}
+.carousel::-webkit-scrollbar { display: none; }
+
+.slide {
+  flex: 0 0 70%;            /* show ~1.4 slides at once */
+  scroll-snap-align: center;
+  background: var(--surface);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .3s, filter .3s;
+  filter: blur(4px) brightness(.8);
+  transform: scale(.85);
+}
+.slide.in-view {
+  filter: none;
+  transform: scale(1);
+}
+
+/* Adjust contents inside each slide */
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.slide h3,
+.slide p {
+  padding: .75rem 1rem;
+  margin: 0;
+}
+
+/* Optional: center the section headings */
+.carousel-section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}

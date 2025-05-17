@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>404 Not Found</title>
+        
+        <link rel="icon" type="image/png" sizes="32x32" href="images/404-icon.png">
+
+        <style>
+            
+            .container{
+                display: flex; 
+                justify-content: center;
+                align-items: center;
+                min-height: 90vh;
+                text-align: center;
+                overflow: hidden;
+                font-family: 'Montserrat', sans-serif;
+                flex-direction: column; /* Sắp xếp các phần tử con theo cột */
+            }
+
+            .ghost{
+                background-color: #e0e0e0;
+                width: 100px;
+                height: 120px;
+                border-radius: 50% 50% 0 0;
+                position: relative;
+                margin-right: 50px;
+            }
+
+            .ghost-eyes{
+                position: absolute; 
+                display: flex; 
+                justify-content: space-around;
+                width: 100%; 
+                top: 35px; 
+            }
+
+            .eye-left, .eye-right {
+                width: 15px;
+                height: 15px;
+                background-color: #333;
+                border-radius: 50%;
+                animation: blink 4s infinite step-end;
+            }
+
+            .ghost-mouth{
+                position: absolute;
+                top: 60px;
+                left: 50%;
+                width: 20px;
+                height: 10px;
+
+                background-color:  #333;
+                border-radius: 0 0 10px 10px;
+                transform: translateX(-50%);
+            }
+
+            .ghost-shadow{
+                width: 80px;
+                height: 15px;
+                background-color: rgba(0, 0, 0, 0.1);
+                border-radius: 50%;
+                position: absolute;
+                bottom: -30px; /* Vị trí bóng đổ */
+                left: 50%;
+                transform: translateX(-50%);
+                animation: shadow-scale 3s infinite ease-in-out;
+            }
+            
+            .first-row{
+                display: flex; 
+
+            }
+
+            .second-row {
+                margin-top: 50px;
+                text-align: center; /* Căn giữa nội dung trong second-row */
+            }
+
+            .second-row h2 {
+                font-size: 30px;
+                margin-top: 10px; /* Tạo khoảng cách với số 404 */
+            }
+
+            .second-row p {
+                font-size: 16px;
+            }
+
+            .button-general {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #ff6b6b;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                margin-top: 20px;
+                margin-right: 20px; 
+                transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển đổi cho transform */
+                border: none; 
+                cursor: pointer;
+            }
+
+            .button-general:hover {
+                background-color: #e65a5a; /* Màu nền đậm hơn khi hover */
+                transform: scale(1.1);
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class = "container">
+
+            <div class = "first-row">
+                <div class = "ghost">
+                    <div class = "ghost-eyes">
+                        <div class="eye-left"></div>
+                        <div class="eye-right"></div>
+                    </div>
+
+                    <div class = "ghost-mouth"> </div>
+                    <div class = "ghost-shadow"> </div>
+                </div>
+
+                <h1 style = "font-size: 100px;            
+                            margin: 0;
+                            color: #ff6b6b;"> 404 </h1>
+            </div>                
+                
+            <div class = "second-row">
+                <h2>Ối! Có vẻ như bạn đã đi lạc.</h2>
+                <p>Trang bạn đang tìm kiếm không tồn tại, đã bị di chuyển hoặc có thể bạn đã gõ nhầm địa chỉ.</p>
+                
+
+        
+                <button class="button-general"  onclick="changeBackgroundImage()"> Angry ? </button>
+                <a href = "https://www.youtube.com/watch?v=nTEYgZywpPA" class = "button-general"> Try it !</a>
+                
+                <script>
+                    const body = document.body;
+                    const images = [
+                        'images/404-light.gif'
+                    ];
+
+                    let currentImageIndex = 0;
+
+                    function changeBackgroundImage() {
+                        currentImageIndex = (currentImageIndex + 1) % images.length;
+                        const newImageUrl = images[currentImageIndex];
+                        body.style.backgroundImage = `url('${newImageUrl}')`;
+                            
+                        const secondRow = document.querySelector('.second-row'); // Lấy phần tử second-row
+                        const firstRow = document.querySelector('.first-row'); // Lấy phần tử second-row
+                        
+                        secondRow.style.display = 'none';
+                        firstRow.style.display = 'none';
+                    }
+                </script>
+
+            </div>
+
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,39 @@
+.prev-button{
+    background-color: white;
+    color: black; 
+
+    border-radius: 50%; 
+
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    height: 40px; 
+    width: 40px; 
+
+    transition: all 0.3s ease; 
+}
+
+.prev-button:hover{        
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.next-button{
+    background-color: white;
+    color: black; 
+
+    border-radius: 50%; 
+
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    height: 40px; 
+    width: 40px; 
+
+    transition: all 0.3s ease; 
+}
+
+.next-button:hover{
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}

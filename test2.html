@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel Slider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .content-section {
+            margin-bottom: 60px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 50px 0 80px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            cursor: grab;
+        }
+
+        .carousel-track:active {
+            cursor: grabbing;
+        }
+
+        .carousel-item {
+            min-width: 280px;
+            height: 320px;
+            margin: 0 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            transform: scale(0.85);
+            opacity: 0.8;
+        }
+
+        .carousel-item.active {
+            transform: scale(1);
+            opacity: 1;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-navigation {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .carousel-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.1);
+        }
+
+        .carousel-button:focus {
+            outline: none;
+        }
+
+        .game-carousel .carousel-button {
+            background-color: #222;
+            color: #fff;
+        }
+
+        .game-carousel .carousel-button:hover {
+            background-color: #333;
+        }
+
+        .blog-item {
+            background-color: white;
+        }
+
+        .game-item {
+            background-color: #121212;
+            color: white;
+        }
+
+        .item-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .item-content {
+            padding: 15px;
+        }
+
+        .item-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .item-description {
+            font-size: 14px;
+            color: inherit;
+            opacity: 0.8;
+        }
+
+        .blog-item .item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .game-item .item-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .game-item .item-rating {
+            display: flex;
+            align-items: center;
+        }
+
+        .game-item .item-rating .star {
+            color: gold;
+            margin-right: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-item {
+                min-width: 240px;
+                height: 300px;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Blog posts section -->
+    <section class="content-section">
+        <h2>Blog Posts</h2>
+        <div class="carousel-container blog-carousel">
+            <div class="carousel-track">
+                
+                <div class="carousel-item blog-item">
+                    <img src="images/hcmus_avatar.jpg" alt="Blog Image" class="item-image">
+
+                    <div class="item-content">
+                        <h3 class="item-title">10 Tips để Tối ưu Website</h3>
+                        <p class="item-description">Những cách đơn giản nhưng hiệu quả để cải thiện tốc độ tải trang...</p>
+                        
+                        <div class="item-meta">
+                            <span>12 Tháng 5, 2025</span>
+                            <span>5 phút đọc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item blog-item">
+                    <img src="/api/placeholder/400/320" alt="Blog Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">Thiết kế UX hiện đại 2025</h3>
+                        <p class="item-description">Khám phá xu hướng thiết kế trải nghiệm người dùng mới nhất...</p>
+                        <div class="item-meta">
+                            <span>10 Tháng 5, 2025</span>
+                            <span>7 phút đọc</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item blog-item">
+                    <img src="/api/placeholder/400/320" alt="Blog Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">JavaScript ES2025</h3>
+                        <p class="item-description">Tìm hiểu về những tính năng mới nhất sẽ được thêm vào ES2025...</p>
+                        <div class="item-meta">
+                            <span>8 Tháng 5, 2025</span>
+                            <span>6 phút đọc</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item blog-item">
+                    <img src="/api/placeholder/400/320" alt="Blog Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">Responsive Design Patterns</h3>
+                        <p class="item-description">Các mẫu thiết kế responsive phổ biến và cách áp dụng...</p>
+                        <div class="item-meta">
+                            <span>5 Tháng 5, 2025</span>
+                            <span>8 phút đọc</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item blog-item">
+                    <img src="/api/placeholder/400/320" alt="Blog Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">React vs Vue 2025</h3>
+                        <p class="item-description">So sánh chi tiết hai framework phổ biến nhất hiện nay...</p>
+                        <div class="item-meta">
+                            <span>1 Tháng 5, 2025</span>
+                            <span>10 phút đọc</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item blog-item">
+                    <img src="/api/placeholder/400/320" alt="Blog Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">CSS Grid Nâng cao</h3>
+                        <p class="item-description">Những kỹ thuật CSS Grid ít người biết giúp layout linh hoạt...</p>
+                        <div class="item-meta">
+                            <span>28 Tháng 4, 2025</span>
+                            <span>9 phút đọc</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-navigation">
+                <button class="carousel-button prev-button">&#10094;</button>
+                <button class="carousel-button next-button">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game section -->
+    <section class="content-section">
+        <h2>Game Collection</h2>
+        <div class="carousel-container game-carousel">
+            <div class="carousel-track">
+                <div class="carousel-item game-item">
+                    <img src="/api/placeholder/400/320" alt="Game Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">Cyber Adventure</h3>
+                        <p class="item-description">Cuộc phiêu lưu kỳ thú trong thế giới cyber punk đầy màu sắc...</p>
+                        <div class="item-meta">
+                            <span>Action RPG</span>
+                            <div class="item-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item game-item">
+                    <img src="/api/placeholder/400/320" alt="Game Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">Mystic Forest</h3>
+                        <p class="item-description">Khám phá khu rừng bí ẩn với những sinh vật huyền bí...</p>
+                        <div class="item-meta">
+                            <span>Adventure</span>
+                            <div class="item-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span>☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item game-item">
+                    <img src="/api/placeholder/400/320" alt="Game Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">Space Odyssey</h3>
+                        <p class="item-description">Cuộc hành trình khám phá không gian vũ trụ bao la...</p>
+                        <div class="item-meta">
+                            <span>Sci-Fi Strategy</span>
+                            <div class="item-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item game-item">
+                    <img src="/api/placeholder/400/320" alt="Game Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">Dragon Quest</h3>
+                        <p class="item-description">Chinh phục các loài rồng và trở thành hiệp sĩ huyền thoại...</p>
+                        <div class="item-meta">
+                            <span>Fantasy RPG</span>
+                            <div class="item-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span>☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item game-item">
+                    <img src="/api/placeholder/400/320" alt="Game Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">Urban Racer</h3>
+                        <p class="item-description">Cuộc đua khốc liệt giữa các đường phố thành phố hiện đại...</p>
+                        <div class="item-meta">
+                            <span>Racing</span>
+                            <div class="item-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item game-item">
+                    <img src="/api/placeholder/400/320" alt="Game Image" class="item-image">
+                    <div class="item-content">
+                        <h3 class="item-title">Tactical Force</h3>
+                        <p class="item-description">Game chiến thuật với các nhiệm vụ thách thức trí tuệ...</p>
+                        <div class="item-meta">
+                            <span>Tactical Shooter</span>
+                            <div class="item-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span>☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-navigation">
+                <button class="carousel-button prev-button">&#10094;</button>
+                <button class="carousel-button next-button">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all carousels
+            const carousels = document.querySelectorAll('.carousel-container');
+            carousels.forEach(initCarousel);
+            
+            function initCarousel(carousel) {
+                const track = carousel.querySelector('.carousel-track');
+                const items = carousel.querySelectorAll('.carousel-item');
+                const prevButton = carousel.querySelector('.prev-button');
+                const nextButton = carousel.querySelector('.next-button');
+                    
+                let isDragging = false;
+                let startPosition = 0;
+                let currentTranslate = 0;
+                let prevTranslate = 0;
+                let currentIndex = 0;
+                let animationID = 0;
+                
+                // Add necessary width to track for proper scrolling
+                const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginLeft) * 2;
+                track.style.width = `${itemWidth * items.length}px`;
+                
+                // Add event listeners
+                items.forEach((item, index) => {
+                    // Touch events
+                    item.addEventListener('touchstart', e => touchStart(index, e));
+                    item.addEventListener('touchend', e => touchEnd(e));
+                    item.addEventListener('touchmove', e => touchMove(e));
+                    
+                    // Mouse events
+                    item.addEventListener('mousedown', e => touchStart(index, e));
+                    item.addEventListener('mouseup', e => touchEnd(e));
+                    item.addEventListener('mouseleave', e => touchEnd(e));
+                    item.addEventListener('mousemove', e => touchMove(e));
+                    
+                    // Prevent context menu on long press
+                    item.addEventListener('contextmenu', e => e.preventDefault());
+                });
+
+                // Add navigation button events
+                prevButton.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        centerItem(currentIndex);
+                    }
+                });
+
+                nextButton.addEventListener('click', () => {
+                    if (currentIndex < items.length - 1) {
+                        currentIndex++;
+                        centerItem(currentIndex);
+                    }
+                });
+                
+                // Center the first item initially
+                setTimeout(() => {
+                    centerItem(Math.floor(items.length / 2));
+                }, 100);
+                
+                function getPositionX(event) {
+                    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+                }
+                
+                function touchStart(index, event) {
+                    startPosition = getPositionX(event);
+                    isDragging = true;
+                    animationID = requestAnimationFrame(animation);
+                }
+                
+                function touchEnd() {
+                    isDragging = false;
+                    cancelAnimationFrame(animationID);
+                    
+                    const movedBy = currentTranslate - prevTranslate;
+                    
+                    // If moved enough negative, move to next slide if there is one
+                    if (movedBy < -100 && currentIndex < items.length - 1) currentIndex += 1;
+                    
+                    // If moved enough positive, move to previous slide if there is one
+                    if (movedBy > 100 && currentIndex > 0) currentIndex -= 1;
+                    
+                    centerItem(currentIndex);
+                }
+                
+                function touchMove(event) {
+                    if (isDragging) {
+                        const currentPosition = getPositionX(event);
+                        currentTranslate = prevTranslate + currentPosition - startPosition;
+                    }
+                }
+                
+                function animation() {
+                    setSliderPosition();
+                    if (isDragging) requestAnimationFrame(animation);
+                }
+                
+                function setSliderPosition() {
+                    // Apply transformation to track
+                    track.style.transform = `translateX(${currentTranslate}px)`;
+                    
+                    // Update active states based on positions
+                    updateActiveItems();
+                }
+                
+                function centerItem(index) {
+                    // Get the center position
+                    const windowWidth = window.innerWidth;
+                    const itemCenter = items[index].offsetWidth / 2;
+                    const centerOffset = windowWidth / 2 - itemCenter;
+                    
+                    currentIndex = index;
+                    currentTranslate = centerOffset - (index * itemWidth);
+                    prevTranslate = currentTranslate;
+                    
+                    // Set the position
+                    setSliderPosition();
+                    
+                    // Update which item is active
+                    updateActiveItems();
+                }
+                
+                function updateActiveItems() {
+                    // Find the item closest to center
+                    const windowWidth = window.innerWidth;
+                    const windowCenter = windowWidth / 2;
+                    
+                    let closestItem = null;
+                    let closestDistance = Infinity;
+                    
+                    items.forEach((item, i) => {
+                        // Calculate center position of this item
+                        const itemBounds = item.getBoundingClientRect();
+                        const itemCenter = itemBounds.left + (itemBounds.width / 2);
+                        const distance = Math.abs(windowCenter - itemCenter);
+                        
+                        // Remove active class initially
+                        item.classList.remove('active');
+                        
+                        // Update closest item if this one is closer
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestItem = item;
+                            currentIndex = i;
+                        }
+                    });
+                    
+                    // Add active class to closest item
+                    if (closestItem) {
+                        closestItem.classList.add('active');
+                    }
+                }
+                
+                // Handle resize
+                window.addEventListener('resize', () => {
+                    centerItem(currentIndex);
+                });
+            }
+
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                const carousels = document.querySelectorAll('.carousel-container');
+                
+                if (e.key === 'ArrowLeft') {
+                    carousels.forEach(carousel => {
+                        carousel.querySelector('.prev-button').click();
+                    });
+                }
+
+                
+                if (e.key === 'ArrowRight') {
+                    carousels.forEach(carousel => {
+                        carousel.querySelector('.next-button').click();
+                    });
+                }
+
+            });
+        });
+    </script> 
+
+    <script>
+                setTimeout(() => {
+                    centerItem(Math.floor(items.length / 2));
+                }, 100);
+                
+                function getPositionX(event) {
+                    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+                }
+                
+                function touchStart(index, event) {
+                    startPosition = getPositionX(event);
+                    isDragging = true;
+                    animationID = requestAnimationFrame(animation);
+                }
+                
+                function touchEnd() {
+                    isDragging = false;
+                    cancelAnimationFrame(animationID);
+                    
+                    const movedBy = currentTranslate - prevTranslate;
+                    
+                    // If moved enough negative, move to next slide if there is one
+                    if (movedBy < -100 && currentIndex < items.length - 1) currentIndex += 1;
+                    
+                    // If moved enough positive, move to previous slide if there is one
+                    if (movedBy > 100 && currentIndex > 0) currentIndex -= 1;
+                    
+                    centerItem(currentIndex);
+                }
+                
+                function touchMove(event) {
+                    if (isDragging) {
+                        const currentPosition = getPositionX(event);
+                        currentTranslate = prevTranslate + currentPosition - startPosition;
+                    }
+                }
+                
+                function animation() {
+                    setSliderPosition();
+                    if (isDragging) requestAnimationFrame(animation);
+                }
+                
+                function setSliderPosition() {
+                    // Apply transformation to track
+                    track.style.transform = `translateX(${currentTranslate}px)`;
+                    
+                    // Update active states based on positions
+                    updateActiveItems();
+                }
+                
+                function centerItem(index) {
+                    // Get the center position
+                    const windowWidth = window.innerWidth;
+                    const itemCenter = items[index].offsetWidth / 2;
+                    const centerOffset = windowWidth / 2 - itemCenter;
+                    
+                    currentIndex = index;
+                    currentTranslate = centerOffset - (index * itemWidth);
+                    prevTranslate = currentTranslate;
+                    
+                    // Set the position
+                    setSliderPosition();
+                    
+                    // Update which item is active
+                    updateActiveItems();
+                }
+                
+                function updateActiveItems() {
+                    // Find the item closest to center
+                    const windowWidth = window.innerWidth;
+                    const windowCenter = windowWidth / 2;
+                    
+                    let closestItem = null;
+                    let closestDistance = Infinity;
+                    
+                    items.forEach((item, i) => {
+                        // Calculate center position of this item
+                        const itemBounds = item.getBoundingClientRect();
+                        const itemCenter = itemBounds.left + (itemBounds.width / 2);
+                        const distance = Math.abs(windowCenter - itemCenter);
+                        
+                        // Remove active class initially
+                        item.classList.remove('active');
+                        
+                        // Update closest item if this one is closer
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestItem = item;
+                            currentIndex = i;
+                        }
+                    });
+                    
+                    // Add active class to closest item
+                    if (closestItem) {
+                        closestItem.classList.add('active');
+                    }
+                }
+                
+                // Handle resize
+                window.addEventListener('resize', () => {
+                    centerItem(currentIndex);
+                });
+
+            }
+        });
+    </script>
+</body>
+</html>

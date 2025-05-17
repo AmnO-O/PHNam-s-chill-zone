@@ -11,28 +11,60 @@ const musicCollection = [
     },
     {
         url : "https://www.youtube.com/watch?v=XkTs-AzGXnc"
-    },{
+    },
+    {
         url : "https://www.youtube.com/watch?v=NWvYZT-HU54",
-    },{
+    },
+    {
         url : "https://www.youtube.com/watch?v=ZXhXlffz_60",
-    },{
+    },
+    {
         url : "https://www.youtube.com/watch?v=uWPy5-4jBSE",
-    },{
+    },
+    {
         url: "https://www.youtube.com/watch?v=iwVdYvi66Fc",
-    },{
+    },
+    {
         url : "https://www.youtube.com/watch?v=_hS33cHtK-E",
-    },{
+    },
+    {
         url : "https://www.youtube.com/watch?v=HC6xx-GxlUY",
-    },{
+    },
+    {
         url : "https://www.youtube.com/watch?v=cGJJX3L7I7I",
-    },{
+    },
+    {
         url : "https://www.youtube.com/watch?v=r1Fx0tqK5Z4",
-    },{
+    },
+    {
         url : "https://www.youtube.com/watch?v=9Ke4480MicU",
-    },{
+    },
+    {
         url : "https://www.youtube.com/watch?v=DzwkcbTQ7ZE",
+    },
+    {
+        url: "https://www.youtube.com/watch?v=N6SQ9QoSjCI&list=RDcGJJX3L7I7I&index=3",
+    },
+    {
+        url: "https://www.youtube.com/watch?v=-CmadmM5cOk",   
+    },
+    {
+        url: "https://www.youtube.com/watch?v=PuZQXbcuqnQ",
+    },
+    {
+        url: "https://www.youtube.com/watch?v=n7eq3E9zE2Y",
+    },
+    {
+        url : "https://www.youtube.com/watch?v=ZAfAud_M_mg",
+    },
+    {
+        url : "https://www.youtube.com/watch?v=TdrL3QxjyVw",
+    },
+    {
+        url : "https://www.youtube.com/watch?v=50VNCymT-Cs",
     }
 ];
+
 
 const randomMusicBtn = document.getElementById('random-music-btn');
 
@@ -43,7 +75,7 @@ randomMusicBtn.addEventListener('click', () => {
     
     randomMusicBtn.style.transform = 'scale(0.95)';
     setTimeout(() => {
-        randomMusicBtn.style.transform = 'scale(1)';
+        randomMusicBtn.style.transform = '';
     }, 100);
     
     // Open random music in new tab
