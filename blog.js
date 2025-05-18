@@ -7,7 +7,9 @@ function blogPopUp(){
         const blogItem = blogTrack.children[i]; 
 
         blogItem.addEventListener('click', () => {
-            window.open('404.html', '_blank'); 
+            const blogLinks = `blog${i}.html`;
+             
+            window.open(blogLinks, '_blank'); 
         }); 
 
     }

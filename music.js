@@ -62,6 +62,15 @@ const musicCollection = [
     },
     {
         url : "https://www.youtube.com/watch?v=50VNCymT-Cs",
+    },
+    {
+        url : "https://www.youtube.com/watch?v=H8NTALzm0F4",
+    },
+    {
+        url : "https://www.youtube.com/watch?v=7RWbq-lbBlk",
+    },
+    {
+        
     }
 ];
 

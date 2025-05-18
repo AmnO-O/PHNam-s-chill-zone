@@ -239,6 +239,10 @@ body.dark-mode .quote-container {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
+body.dark-mode .blog-post{
+    background-color: rgb(255, 255, 255);
+}
+
 
 .carousel-item {
     min-width: 280px;

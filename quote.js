@@ -76,28 +76,31 @@ const quotes = [
         meaning: "Thật lòng mà nói, tôi không còn là người mà tôi từng quen. Họ nói tôi đã thay đổi, tôi chỉ đáp lại rằng bạn cũng vậy!"
     },
     {
-        "text": "Dựa vào núi, núi sẽ đổ. Dựa vào đá đá sẽ mòn. Dựa vào người, người sẽ đi. Dựa vào chính mình thì mới là vĩnh cửu",
-        "meaning": "Đừng quá dựa dẫm, chỉ có tự lực mới bền vững."
+        text: "Dựa vào núi, núi sẽ đổ. Dựa vào đá đá sẽ mòn. Dựa vào người, người sẽ đi. Dựa vào chính mình thì mới là vĩnh cửu",
+        meaning: "Đừng quá dựa dẫm, chỉ có tự lực mới bền vững."
     },
     {
-        "text": "Dạo này muốn đi xăm ... Xăm time I miss her",
-        "meaning": "Chơi chữ 'xăm' và 'some time' để nói về nỗi nhớ."
+        text: "Dạo này muốn đi xăm ... Xăm time I miss her",
+        meaning: "Chơi chữ 'xăm' và 'some time' để nói về nỗi nhớ."
     },
     {
-        "text": "Anh uống hết chai dầu gội Dove, bởi vì nó ghi giúp phục hồi thư tổn từ sâu bên trong",
-        "meaning": "Hiểu sai hài hước về công dụng dầu gội."
+        text: "Anh uống hết chai dầu gội Dove, bởi vì nó ghi giúp phục hồi hư tổn từ sâu bên trong",
+        meaning: "Hiểu sai hài hước về công dụng dầu gội."
     },
     {
-        "text": "Thương nhiều hơn là nói nhưng khi anh đã nói là thương thì,như là kiến về tổ cho dù thế nào anh cũng tìm ĐƯỜNG",
-        "meaning": "Yêu âm thầm nhưng quyết tâm theo đuổi."
+        text: "Thương nhiều hơn là nói nhưng khi anh đã nói là thương thì, như là kiến về tổ cho dù thế nào anh cũng tìm ĐƯỜNG",
+        meaning: "Yêu âm thầm nhưng quyết tâm theo đuổi."
     },
     {
-        "text": "Tình yêu anh như biển lớn bởi vì nó không bao giờ hết mặn.",
-        "meaning": "Tình yêu trải qua nhiều cay đắng nhưng không phai nhạt."
+        text: "Tình yêu anh như biển lớn bởi vì nó không bao giờ hết mặn.",
+        meaning: "Tình yêu trải qua nhiều cay đắng nhưng không phai nhạt."
     },
     {
-        "text": "",
-        "meaning": "Trống."
+        text: "Tại sao cậu không quay lại với người yêu cũ ? Bởi vì nếu cậu thấy cùng một cái cây hai lần trong khu rừng, nghĩa là cậu đã bị lạc",
+        meaning: ""
+    },
+    {
+        
     }
 ];
 
