@@ -118,9 +118,14 @@ quoteText.textContent = `"${quotes[Index].text}"`;
 quoteMeaning.textContent = quotes[Index].meaning; 
 
 
-
 function getRandomQuote(){
-    const randomIndex = Math.floor(Math.random() * quotes.length); 
+    let randomIndex = Math.floor(Math.random() * quotes.length); 
+    let currentText = quoteText.textContent.slice(1, -1);
+
+    do {
+        randomIndex = Math.floor(Math.random() * quotes.length);
+    } while (quotes[randomIndex].text === currentText);
+
     const randomQuote = quotes[randomIndex]; 
 
     quoteText.style.opacity = 0; 
