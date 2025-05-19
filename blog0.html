@@ -12,7 +12,7 @@
 
         <style>
             :root{
-              --primary-color: #064663;
+                --primary-color: #064663;
                 --secondary-color: #106690;
                 --text-color: #333;
                 --bg-color: #f5f5f5;
@@ -21,6 +21,8 @@
                 --sidebar-text: #ffffff;
                 --accent-color: #4cb9e7;
                 --border-color: #e0e0e0;
+                --header-color:  #064663;
+                --btn-color: #064663;
             }
     
             [data-theme="dark"] {
@@ -33,6 +35,8 @@
                 --sidebar-text: #ffffff;
                 --accent-color: #4cb9e7;
                 --border-color: #164B6A;
+                --header-color:  white; 
+                --btn-color: #4cb9e7;
             }
 
             body{
@@ -118,7 +122,7 @@
             .back-button{
                 display: inline-flex; 
                 align-items: center;
-                background-color: var(--primary-color); 
+                background-color: var(--btn-color); 
                 color : white; 
                 padding: 10px 20px; 
                 border-radius: 30px; 
@@ -132,25 +136,40 @@
                 background-color: var(--secondary-color); 
             }
 
-            .table-of-contents{
-                position: sticky; 
+            .table-of-contents {
+                position: sticky;
+                top: 20px;
                 background-color: var(--card-bg);
                 padding: 20px;
                 margin-bottom: 30px;
-                float : right; 
-                margin-right: 50px; 
                 border-radius: 10px;
                 z-index: 1000;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                grid-column: 2; 
+                align-self: start;
+            }
+
+            .table-of-contents {
+                position: sticky;
+                top: 20px; /* Khoảng cách từ đỉnh khi dính */
+                background-color: var(--card-bg);
+                padding: 20px;
+                margin-bottom: 30px;
+                margin-right: 50px;
+                border-radius: 10px;
+                z-index: 1000;
+                width: 400px; 
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                order: 2; 
+                align-self: start; /* Đảm bảo nó dính từ đầu container */
             }
 
             .table-of-contents h3 {
                 margin-bottom: 15px;
                 font-size: 1.2rem;
-                color: var(--primary-color);
+                color: var(--header-color);
                 border-bottom: 1px solid var(--border-color);
                 padding-bottom: 10px;
-                width: 200px; 
             }
 
             .toc-list{
@@ -173,6 +192,11 @@
                 padding-left: 30px;
                 transition: border-color 0.2s, color 0.2s;
                 font-size: 0.95rem;
+            }
+
+            .toc-list a:hover, .toc-list a.active {
+                color: var(--accent-color);
+                border-left-color: var(--accent-color);
             }
 
             .toc-link{
@@ -207,7 +231,7 @@
             .blog-title{
                 font-size: 2.5rem; 
                 margin-bottom: 10px;
-                color : var(--primary-color);
+                color : var(--header-color);
             }
 
             .blog-meta {
@@ -221,6 +245,39 @@
 
             .blog-meta i {
                 margin-right: 5px;
+            }
+
+            .blog-content {
+                line-height: 1.8;
+                font-size: 1.1rem;
+                color : var(--text-color); 
+            }
+            
+            .blog-content p {
+                margin-bottom: 20px;
+
+            }
+
+            .blog-content h2{
+                color : var(--header-color); 
+                margin: 30px 0 15px;
+
+            }
+
+            .blog-container {
+                display: flex; /* Sử dụng flexbox để sắp xếp các phần tử con */
+                flex-direction: row; /* Sắp xếp các phần tử con theo hàng ngang */
+                align-items: flex-start; /* Căn chỉnh các phần tử con ở phía trên */
+                max-width: 1200px; /* Ví dụ: giới hạn chiều rộng tối đa của container */
+                margin: 0 auto; /* Căn giữa container nếu cần */
+                padding: 20px; /* Thêm padding cho container */
+            }
+
+
+            .blog-content {
+                flex-grow: 1; 
+                margin-right: 30px; 
+                order: 1; 
             }
 
         </style>
@@ -270,7 +327,7 @@
                     <input type="checkbox" id="theme-toggle">
                     <span class="slider"></span>
                 </div>
-                <span class="mode-toggle-text"> Light mode</span>
+                <span class="mode-toggle-text">Dark mode</span>
             </label>
         </aside>
 
@@ -289,22 +346,90 @@
                     </div>
                     <img src="images/Blog-images/blog0-all.jpg" alt="Blog Thumbnail" class="blog-thumbnail">
                 </header>
-            
-                <div class="table-of-contents">
-                    <h3>Mục lục</h3>
-                    <ul class="toc-list">
-                        <li><a href="#section1" class="toc-link">Giới thiệu</a></li>
-                        <li><a href="#section2" class="toc-link"> Trò chơi </a></li>
-                        <li><a href="#section3" class="toc-link"> Cảm xúc </a></li>
-                        <li><a href="#section4" class="toc-link"> Hồi tưởng </a></li>
-                        <li><a href="#section5" class="toc-link">Lời kết</a></li>
-                    </ul>
+                
+                <div class = "blog-container">
+                    <div class="table-of-contents">
+                        <h3>Mục lục</h3>
+                        <ul class="toc-list">
+                            <li><a href="#section1" class="toc-link">Giới thiệu</a></li>
+                            <li><a href="#section2" class="toc-link"> Trò chơi </a></li>
+                            <li><a href="#section3" class="toc-link"> Cảm xúc </a></li>
+                            <li><a href="#section4" class="toc-link"> Hồi tưởng </a></li>
+                            <li><a href="#section5" class="toc-link">Lời kết</a></li>
+                        </ul>
+                    </div>
+
+                    <div class = "blog-content">
+                        <h2 id="section1">Giới thiệu</h2>
+                        <p> Xin chào !! Hôm nay mình sẽ viết về cảm nhận của mình về buổi Goodbye oldbie của 22 TI mà mình tham dự </p>
+
+                    </div>
                 </div>
 
             </article>
 
 
         </main>
+
+        <script>
+            const themetoggle = document.getElementById('theme-toggle');
+
+            if (themetoggle) {
+                if(localStorage.getItem('theme') === 'dark'){
+                    document.documentElement.dataset.theme = 'dark';
+                    themetoggle.checked = true;
+                }
+
+                themetoggle.addEventListener('change', function(){
+                    if(this.checked){
+                        document.documentElement.dataset.theme = 'dark';
+                        localStorage.setItem('theme', 'dark');
+                    }else{
+                        delete document.documentElement.dataset.theme;
+                        localStorage.setItem('theme', 'light');
+                    }
+                });
+            }
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('h2[id]');
+            
+            // Highlight active section in TOC
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Smooth scroll for TOC links
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 50,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+        </script>
 
 
     </body>

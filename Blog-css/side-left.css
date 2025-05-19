@@ -118,13 +118,12 @@
 .mode-toggle {
     display: flex;
     align-items: center;
-    margin-top: auto;
     justify-content: space-evenly;
     padding: 12px 15px;
     border-radius: 8px;
     cursor: pointer;
     margin-bottom:  30px;
-    width: 100%; 
+    width: 80%; 
     margin-left: 50px; 
     margin-right: 50px; 
 }
