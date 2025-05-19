@@ -97,10 +97,11 @@ const quotes = [
     },
     {
         text: "Tại sao cậu không quay lại với người yêu cũ ? Bởi vì nếu cậu thấy cùng một cái cây hai lần trong khu rừng, nghĩa là cậu đã bị lạc",
-        meaning: ""
+        meaning: "Việc quay lại với người yêu cũ có thể giống như đi lạc trong rừng, lặp lại những vấn đề cũ mà không tìm được lối thoát."
     },
     {
-        
+        text: "There's no one to love you when you build your walls too high !",
+        meaning: "Khi bạn tạo ra quá nhiều rào cản và khép kín, sẽ rất khó để người khác có thể yêu thương bạn."
     }
 ];
 
