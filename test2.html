@@ -399,23 +399,6 @@
                 const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginLeft) * 2;
                 track.style.width = `${itemWidth * items.length}px`;
                 
-                // Add event listeners
-                items.forEach((item, index) => {
-                    // Touch events
-                    item.addEventListener('touchstart', e => touchStart(index, e));
-                    item.addEventListener('touchend', e => touchEnd(e));
-                    item.addEventListener('touchmove', e => touchMove(e));
-                    
-                    // Mouse events
-                    item.addEventListener('mousedown', e => touchStart(index, e));
-                    item.addEventListener('mouseup', e => touchEnd(e));
-                    item.addEventListener('mouseleave', e => touchEnd(e));
-                    item.addEventListener('mousemove', e => touchMove(e));
-                    
-                    // Prevent context menu on long press
-                    item.addEventListener('contextmenu', e => e.preventDefault());
-                });
-
                 // Add navigation button events
                 prevButton.addEventListener('click', () => {
                     if (currentIndex > 0) {
@@ -438,34 +421,6 @@
                 
                 function getPositionX(event) {
                     return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-                }
-                
-                function touchStart(index, event) {
-                    startPosition = getPositionX(event);
-                    isDragging = true;
-                    animationID = requestAnimationFrame(animation);
-                }
-                
-                function touchEnd() {
-                    isDragging = false;
-                    cancelAnimationFrame(animationID);
-                    
-                    const movedBy = currentTranslate - prevTranslate;
-                    
-                    // If moved enough negative, move to next slide if there is one
-                    if (movedBy < -100 && currentIndex < items.length - 1) currentIndex += 1;
-                    
-                    // If moved enough positive, move to previous slide if there is one
-                    if (movedBy > 100 && currentIndex > 0) currentIndex -= 1;
-                    
-                    centerItem(currentIndex);
-                }
-                
-                function touchMove(event) {
-                    if (isDragging) {
-                        const currentPosition = getPositionX(event);
-                        currentTranslate = prevTranslate + currentPosition - startPosition;
-                    }
                 }
                 
                 function animation() {
@@ -556,111 +511,5 @@
         });
     </script> 
 
-    <script>
-                setTimeout(() => {
-                    centerItem(Math.floor(items.length / 2));
-                }, 100);
-                
-                function getPositionX(event) {
-                    return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-                }
-                
-                function touchStart(index, event) {
-                    startPosition = getPositionX(event);
-                    isDragging = true;
-                    animationID = requestAnimationFrame(animation);
-                }
-                
-                function touchEnd() {
-                    isDragging = false;
-                    cancelAnimationFrame(animationID);
-                    
-                    const movedBy = currentTranslate - prevTranslate;
-                    
-                    // If moved enough negative, move to next slide if there is one
-                    if (movedBy < -100 && currentIndex < items.length - 1) currentIndex += 1;
-                    
-                    // If moved enough positive, move to previous slide if there is one
-                    if (movedBy > 100 && currentIndex > 0) currentIndex -= 1;
-                    
-                    centerItem(currentIndex);
-                }
-                
-                function touchMove(event) {
-                    if (isDragging) {
-                        const currentPosition = getPositionX(event);
-                        currentTranslate = prevTranslate + currentPosition - startPosition;
-                    }
-                }
-                
-                function animation() {
-                    setSliderPosition();
-                    if (isDragging) requestAnimationFrame(animation);
-                }
-                
-                function setSliderPosition() {
-                    // Apply transformation to track
-                    track.style.transform = `translateX(${currentTranslate}px)`;
-                    
-                    // Update active states based on positions
-                    updateActiveItems();
-                }
-                
-                function centerItem(index) {
-                    // Get the center position
-                    const windowWidth = window.innerWidth;
-                    const itemCenter = items[index].offsetWidth / 2;
-                    const centerOffset = windowWidth / 2 - itemCenter;
-                    
-                    currentIndex = index;
-                    currentTranslate = centerOffset - (index * itemWidth);
-                    prevTranslate = currentTranslate;
-                    
-                    // Set the position
-                    setSliderPosition();
-                    
-                    // Update which item is active
-                    updateActiveItems();
-                }
-                
-                function updateActiveItems() {
-                    // Find the item closest to center
-                    const windowWidth = window.innerWidth;
-                    const windowCenter = windowWidth / 2;
-                    
-                    let closestItem = null;
-                    let closestDistance = Infinity;
-                    
-                    items.forEach((item, i) => {
-                        // Calculate center position of this item
-                        const itemBounds = item.getBoundingClientRect();
-                        const itemCenter = itemBounds.left + (itemBounds.width / 2);
-                        const distance = Math.abs(windowCenter - itemCenter);
-                        
-                        // Remove active class initially
-                        item.classList.remove('active');
-                        
-                        // Update closest item if this one is closer
-                        if (distance < closestDistance) {
-                            closestDistance = distance;
-                            closestItem = item;
-                            currentIndex = i;
-                        }
-                    });
-                    
-                    // Add active class to closest item
-                    if (closestItem) {
-                        closestItem.classList.add('active');
-                    }
-                }
-                
-                // Handle resize
-                window.addEventListener('resize', () => {
-                    centerItem(currentIndex);
-                });
-
-            }
-        });
-    </script>
 </body>
 </html>
