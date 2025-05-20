@@ -282,6 +282,101 @@
                 order: 1; 
             }
 
+
+            .comments-section{
+                margin-top: 50px;
+                border-top: 1px solid var(--border-color);
+                padding-top: 30px;
+                margin-right: 400px; 
+            }
+
+            .comments-section h3 {
+                margin-bottom: 20px;
+                font-size: 1.5rem;
+                color: var(--primary-color);
+            }
+
+            .comment-form {
+                margin-bottom: 30px;
+            }
+
+            .comment-form-row {
+                display: flex;
+                gap: 50px;
+                margin-bottom: 15px;
+            }
+
+            .comment-form-row > div {
+                flex: 1;
+            }
+
+            .comment-form button {
+                background-color: var(--accent-color);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 30px;
+                cursor: pointer;
+                font-weight: 500;
+                transition: background-color 0.2s;
+            }
+
+            .comment-form button:hover {
+                background-color: #3a97c9;
+            }
+
+
+            .comment-form input[type="text"],
+            .comment-form input[type="email"] {
+                width: 100%;
+                padding: 12px 15px;
+                border-radius: 8px;
+                border: 1px solid var(--border-color);
+                background-color: var(--card-bg);
+                color: var(--text-color);
+                font-family: inherit;
+                margin-bottom: 10px;
+            }
+
+            .comment-form textarea {
+                width: 100%;
+                padding: 15px;
+                border-radius: 8px;
+                border: 1px solid var(--border-color);
+                background-color: var(--card-bg);
+                color: var(--text-color);
+                font-family: inherit;
+                height: 100px;
+                margin-bottom: 10px;
+                resize: vertical;
+            }
+
+            .comment {
+                background-color: var(--card-bg);
+                border-radius: 12px;
+                padding: 20px;
+                margin-bottom: 15px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            .comment-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+
+            .commenter-name {
+                font-weight: 600;
+            }
+
+            .comment-date {
+                font-size: 0.8rem;
+                color: #666;
+            }
+
+            .comment-text {
+                line-height: 1.6;
+            }
         </style>
     </head>
 
@@ -392,11 +487,56 @@
                             Đan lên phát biểu cũng thế nghe ít lắm =)).  Xong thì phổ biến luật chơi các thứ 
                         </p>
                         
+                        <h2 id = "section4"> Hồi tưởng </h2>
+                        <p>
+
+                        </p>
+
+                        <h2 id = "section5"> Lời kết </h2>
+                        <p>
+
+                        </p>
 
                     </div>
                 </div>
-
             </article>
+
+
+            <section class = "comments-section">
+                <h3> Bình luận </h3>
+
+                <div class="comment-form">
+                    <div class="comment-form-row">
+                        <div>
+                            <input type="text" placeholder="Tên của bạn" id="commenter-name">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Email của bạn" id="commenter-email">
+                        </div>
+                    </div>
+                    <textarea placeholder="Viết bình luận của bạn..." id="comment-text"></textarea>
+                    <button id="submit-comment">Gửi bình luận</button>
+                </div>
+
+                
+                
+                <div class="comments">
+                    <div class="comment">
+                        <div class="comment-header">
+                            <div class="commenter-name">Phạm Hữu Nam </div>
+                            <div class="comment-date">20 Tháng 5, 2025</div>
+                        </div>
+                        <div class="comment-text">
+                            Chưa có code phần comment :)) vì chưa học. 
+                            Nhắn gì thì gửi không nhắn cũng gửi 🐧🐧🐧. 
+                        
+                            <a style = "color: var(--text-color)" href="https://link-it.me/s/5d8034a4-c0bb-4e8c-84ed-2b6f29cbce12?" target="_blank" >Gửi đại đi !</a>
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
 
 
         </main>
