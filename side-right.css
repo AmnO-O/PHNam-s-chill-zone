@@ -1,13 +1,16 @@
 .side-right {
     flex : 1; 
-    margin-left: 200px;
     padding: 20px;
     min-height: 100vh;
+    
+    margin-left: var(--sidebar-width);
 
     color: #013d5a;
     background-color: #f5f5f5;
     transition: background-color 0.3s ease, color 0.3s ease;
     overflow-y: auto;
+    
+    overflow-x: hidden;
 }
 
 body.dark-mode .side-right{

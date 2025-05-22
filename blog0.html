@@ -25,6 +25,8 @@
                 --border-color: #e0e0e0;
                 --header-color:  #064663;
                 --btn-color: #064663;
+                --sidebar-width: 240px;
+                --transition: all 0.3s ease;
             }
     
             [data-theme="dark"] {
@@ -49,7 +51,7 @@
             }
 
             .side-bar{
-                width : 240px; 
+                width : var(--sidebar-width); 
                 position: fixed; 
                 top : 0; 
                 bottom: 0; 
@@ -96,7 +98,6 @@
                 gap : 1rem; 
                 flex-grow: 1; 
                 margin-bottom: 2rem;
-
             }
 
             .nav-item{
@@ -116,7 +117,7 @@
 
             .main-content{
                 flex: 1; 
-                margin-left: 240px;
+                margin-left: var(--sidebar-width);
                 padding: 20px;
                 min-height: 100vh;
             }
@@ -377,11 +378,154 @@
             .comment-text {
                 line-height: 1.6;
             }
+
+            .mobile-menu-toggle {
+                display: none;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            .mobile-menu-toggle:hover{
+                opacity: 0.85; 
+            }
+
+            @media (max-width: 768px) {
+                .mobile-menu-toggle {
+                    display: block;
+                }
+
+                .side-bar {
+                    transform: translateX(-100%);
+                }
+
+                .side-bar.mobile-open {
+                    transform: translateX(0);
+                }
+
+                .main-content {
+                    margin-left: 0;
+                    padding: 20px;
+                    padding-top: 70px;
+                }
+
+                .blog-title {
+                    font-size: 1.8rem;
+                }
+
+                .blog-meta {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 10px;
+                }
+
+                .blog-content {
+                    font-size: 1rem;
+                }
+
+                .blog-content h2 {
+                    font-size: 1.5rem;
+                    margin: 30px 0 15px;
+                }
+
+                .comment-form-row {
+                    grid-template-columns: 1fr;
+                    gap: 15px;
+                }
+
+                .comment-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 5px;
+                }
+
+                .table-of-contents {
+                    padding: 20px;
+                }
+
+                .comments-section {
+                    margin-top: 40px;
+                    padding-top: 30px;
+                }
+            }
+            @media (max-width: 480px) {
+                .main-content {
+                    padding: 15px;
+                    padding-top: 60px;
+                }
+
+                .blog-title {
+                    font-size: 1.5rem;
+                }
+
+                .blog-content {
+                    font-size: 0.95rem;
+                }
+
+                .blog-content h2 {
+                    font-size: 1.3rem;
+                }
+
+                .comment-form {
+                    padding: 20px;
+                }
+
+                .comment {
+                    padding: 20px;
+                }
+
+                .back-button {
+                    padding: 10px 16px;
+                }
+            }
+
+            /* Landscape Mobile */
+            @media (max-width: 768px) and (orientation: landscape) {
+                .main-content {
+                    padding-top: 80px;
+                }
+            }
+
+            /* Dark mode adjustments */
+            [data-theme="dark"] .comment-date {
+                color: #aaa;
+            }
+
+            [data-theme="dark"] .blog-meta {
+                color: #aaa;
+            }
+
+            /* Smooth scroll behavior */
+            html {
+                scroll-behavior: smooth;
+            }
+
+            /* Loading animation for images */
+            img {
+                transition: opacity 0.3s ease;
+            }
+
+            img:not([src]) {
+                opacity: 0;
+            }
         </style>
     </head>
 
     <body>
-        <aside class = "side-bar">
+        
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <aside class = "side-bar" id = "sidebar">
             <div class = "profile">
                 <img src = "images/personal_avatar.jpg" class = "profile-img" alt = "Avatar của Phạm Hữu Nam">
                 <p class="user-name" style = "font-family: 'IBM Plex Sans';">Phạm Hữu Nam</p>
@@ -542,6 +686,23 @@
         </main>
 
         <script>
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const sidebar = document.getElementById('sidebar');
+
+            mobileMenuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('mobile-open');
+            });
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    if (!sidebar.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                        sidebar.classList.remove('mobile-open');
+                    }
+                }
+            });
+
+
             const themetoggle = document.getElementById('theme-toggle');
 
             if (themetoggle) {
