@@ -32,7 +32,7 @@ function initBlog(blog){
     let prevTranslate = 0;
     let currentIndex = 0;
 
-    const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginLeft) * 2;
+    const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(items[0]).marginRight) * 2;
     blog_track.style.width = `${itemWidth * items.length}px`;
     
 
