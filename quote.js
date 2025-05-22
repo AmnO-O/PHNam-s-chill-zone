@@ -102,6 +102,34 @@ const quotes = [
     {
         text: "There's no one to love you when you build your walls too high !",
         meaning: "Khi bạn tạo ra quá nhiều rào cản và khép kín, sẽ rất khó để người khác có thể yêu thương bạn."
+    },
+    {
+        text: "Lòng anh như con ngựa hoang bởi vì nó không yên !",
+        meaning: "Lòng người xao động, khó kiểm soát."
+    },
+    {
+        text: "Khi bạn khao khát một điều gì đó, cả vũ trụ sẽ hợp lực giúp bạn đạt được điều đó.",
+        meaning: "Khát vọng mãnh liệt sẽ được vũ trụ hỗ trợ."
+    },
+    {
+        text: "Súng không lau mau han rỉ, người không rèn ý chí không cao.",
+        meaning: "Không rèn luyện thì ý chí không vững vàng."
+    },
+    {
+        text: "Cúi đầu là sách vở,ngẩng đầu là tương lai. Hôm nay là sách,ngày mai là tiền.",
+        meaning: "Học tập hôm nay để có tương lai tốt đẹp."
+    },
+    {
+        text: "A seed can't grow unless it's planted deep in the dirt , so it is with life",
+        meaning: "Kể cả khi cuộc sống trở nên vô nghĩa, tôi vẫn sẽ gắng gượng bước tiếp. Vì những người tôi yêu thương, hôm nay và cả ngày mai."
+    },
+    {
+        text: "Nếu nghĩ mình thất bại thì đừng đòi hỏi thành công.",
+        meaning: "Tư duy tiêu cực sẽ cản trở thành công."
+    },
+    {
+        text: "Bây giờ không làm thì ai sẽ làm điều đó cho mày.",
+        meaning: "Hãy tự mình hành động ngay."
     }
 ];
 
