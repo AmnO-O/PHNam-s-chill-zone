@@ -268,12 +268,10 @@
             }
 
             .blog-container {
-                display: flex; /* Sử dụng flexbox để sắp xếp các phần tử con */
-                flex-direction: row; /* Sắp xếp các phần tử con theo hàng ngang */
-                align-items: flex-start; /* Căn chỉnh các phần tử con ở phía trên */
-                max-width: 1200px; /* Ví dụ: giới hạn chiều rộng tối đa của container */
-                margin: 0 auto; /* Căn giữa container nếu cần */
-                padding: 20px; /* Thêm padding cho container */
+                display: flex;
+                gap: 30px;
+                max-width: 1200px;
+                margin: 0 auto;
             }
 
 
@@ -516,6 +514,7 @@
             img:not([src]) {
                 opacity: 0;
             }
+    
         </style>
     </head>
 
