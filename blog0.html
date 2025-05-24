@@ -514,7 +514,46 @@
             img:not([src]) {
                 opacity: 0;
             }
-    
+            /* General image responsiveness */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Media query for screens up to 768px */
+            @media (max-width: 768px) {
+                .blog-container {
+                    flex-direction: column;
+                }
+
+                .table-of-contents {
+                    order: 0;
+                    position: static;
+                    width: 100%;
+                    margin-right: 0;
+                    padding: 15px;
+                }
+
+                .blog-content {
+                    order: 1;
+                    margin-right: 0;
+                }
+
+                .comments-section {
+                    margin-right: 0;
+                }
+
+                .blog-thumbnail {
+                    height: 300px;
+                }
+            }
+
+            /* Further adjustments for very small screens */
+            @media (max-width: 480px) {
+                .blog-thumbnail {
+                    height: 200px;
+                }
+            }
         </style>
     </head>
 
@@ -536,7 +575,7 @@
                     <img src = "images/facebook-light.png" class = "social-icon" alt = "Facebook">
                 </a>
 
-                <a href = "https://locket.camera/links/F2x8hSAXUQcYy41m7", target = "_blank", title = "Instagram">
+                <a href = "https://locket.camera/links/F2x8hSAXUQcYy41m7", target = "_blank", title = "Locket">
                     <img src = "images/locket.jpg" class = "social-icon" style = "border-radius: 50%;" alt = "Instagram">
                 </a>       
 
@@ -627,17 +666,58 @@
                         <p>
                             Xong rồi thì có mấy em 23 TI lên làm mc thằng làm mc là thằng mình duy nhất mình chỉ bài tin học luôn 🐧🐧. 
                             Mấy em 23 TI mình quen ít thật sự. Rồi có anh Sơn lên phát biểu :)) mà quả mic hơi lỏ nên chả nghe được gì lắm. 
-                            Đan lên phát biểu cũng thế nghe ít lắm =)).  Xong thì phổ biến luật chơi các thứ 
+                            Đan lên phát biểu cũng thế nghe ít lắm =)).  Xong thì phổ biến luật chơi các thứ.
+
+                            Trò đầu là trò truyền bóng gì đấy, mình có cảm giác mình chả chơi được trò đấy =))) Quá đớn làm quả tạ cho mọi người. 
+                            Xong thì đến trò thứ hai là trò vẽ bản đồ, một cây bút xong được quấn 4 cái dây vô xong mỗi người sẽ cầm 1 hướng. Cảm thấy
+                            trò đấy hay phết trò đấy mình chơi ổn, kiểu ai nghĩ ra cái trò đấy cũng hay ghê =)). Xong đến trò chuyền vòng thì mình
+                            cũng chơi ổn. Thôi quan trọng là chơi vui thôi mà !!! Kết quả không quan trọng, quan trọng là vui thôi. 
+                            Mình cảm giác mấy em có nhiệt huyết tuổi trẻ đấy =)) chơi hăng ác.
+                        </p>
+
+                        <p>
+                            Thì đấy là phần trò chơi, kiểu khi chơi xong ấy mình đi dạo trường một chút thì thấy mọi thứ
+                            đã thay đổi từng chút. Bây giờ không còn canteen như xưa, mình nhớ chú canteen mà bọn mình 
+                            mượn cái vòi xịt nước vãi :))). Lúc hạ vũ k21 ấy, trời mưa xong thêm quả cầm vòi nước tưới
+                            cây đi xịt xung quanh nói chung lúc đấy vui ác đấy. Rồi các tòa được đánh theo số nữa chứ
+                            như kiểu trường đại học vậy. Rồi có cả máy điểm danh nữa ! Mọi thứ luôn vận động và phát triển
+                            nhỉ. 
+                        </p>
+
+                        <p>
+                            Xong lúc mình bước lại thì các em bảo vô lớp của k24 Tin. Mấy đứa này giữ lớp sạch dữ =))), vô
+                            nhìn sạch thật. Đúng là nhà sạch thì mát, bát sạch thì ngon cơm 🐧! Vô ổn định chỗ ngồi, xong
+                            các em chiếu siêu phẩm cho mọi người coi :)) nói chung làm hay lắm ấy tôi đánh giá 10/10. Mà mình
+                            ngồi đấy mình thấy mình có nhiều pha cư xử còn trẻ con quá =)). Cười suốt nhìn như cợt nhả, 
+                            ôk tôi sẽ trở nên nghiêm khắc hơn và trưởng thành hơn ! Mỗi ngày một bài học mà, đi cái buổi này
+                            cũng giúp mình tốt hơn mà. =))). 
                         </p>
                         
                         <h2 id = "section4"> Hồi tưởng </h2>
-                        <p>
+                        <img src = "images/Blog-images/blog0-tam_su.jpg"  alt="Blog Thumbnail" class="blog-thumbnail">
 
+                        <p>
+                            Thì xong các em ra khỏi lớp thì trời cũng hơi tối đi rồi, xong mấy đứa ra ngồi vòng tròn xong
+                            bật nhạc hát ấy =))). Mình thấy y như bọn mình năm ngoái, ngồi vòng vòng xong đi hát xong nắm
+                            tay nhau hát =))). Damn, thật hoài niệm nhưng mà mình cảm giác mình không thể sung như vậy được nữa.
+                            Có cảm giác nhiệt huyết tuổi trẻ đã giảm đi một chút. Sợ là mỗi năm sẽ giảm từ từ =)), nhưng mà
+                            thấy Như với Thy vẫn sung lắm =))). Xong Thy thấy mình kiểu lạc loài hay sao đấy xong nó bảo
+                            m không thể hòa nhập à. Thì cũng chẳng biết nói gì ... Thì nó là vậy, nhưng cũng được nó sẽ làm mình sống lại kí ức
+                            lúc đó. Mấy đứa kia hỏi sao mấy đứa kia đi đá banh mà m không đi, thì tại mình muốn níu lại càng lâu
+                            càng tốt thôi. Nhớ lớp 11 thật kiểu, lúc đó sẽ luôn có 2 chuyển xe bus, thì mình luôn chọn chuyến sau
+                            vì mình muốn níu lại càng lâu càng tốt ...
                         </p>
 
                         <h2 id = "section5"> Lời kết </h2>
                         <p>
+                            Đúng là trường chuyên Lương Thế Vinh trong mỗi học sinh sẽ có kí ức riêng.
+                            Ngày xưa mình có học 1 thầy dạy tiếng anh, thầy cũng là cựu học sinh chuyên Lương Thế Vinh
+                            thầy bảo thầy không thấy trường đẹp như trường thầy lúc xưa. 
+                        </p>
 
+                        <p>
+                            Triết học thì có câu : "Không ai tắm hai lần trên cùng một dòng sông" thì mình nghĩ câu này
+                            giống cái câu : "Ta không thể gặp lại những người mà ta đã gặp dù đó là cùng một người". 
                         </p>
 
                     </div>
