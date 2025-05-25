@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang = "vi">
     <meta charset="UTF-8">
-    <meta name="description" content="Blog về Goodbye oldbie 22 TI">
+    <meta name="description" content="Blog về lần đầu đi metro">
     <head>
-        <title> Gbob 22TI </title>
+        <title> Metro HCM </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" type="image/png" sizes="32x32" href="images/Blog-images/blog0-gbobk22.jpg">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/Blog-images/blog1-metro.jpg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="Blog-css/side-left.css">
         <link rel="stylesheet" href="Blog-css/side-right.css">
@@ -25,6 +25,8 @@
                 --border-color: #e0e0e0;
                 --header-color:  #064663;
                 --btn-color: #064663;
+                --sidebar-width: 240px;
+                --transition: all 0.3s ease;
             }
     
             [data-theme="dark"] {
@@ -49,7 +51,7 @@
             }
 
             .side-bar{
-                width : 240px; 
+                width : var(--sidebar-width); 
                 position: fixed; 
                 top : 0; 
                 bottom: 0; 
@@ -96,7 +98,6 @@
                 gap : 1rem; 
                 flex-grow: 1; 
                 margin-bottom: 2rem;
-
             }
 
             .nav-item{
@@ -116,7 +117,7 @@
 
             .main-content{
                 flex: 1; 
-                margin-left: 240px;
+                margin-left: var(--sidebar-width);
                 padding: 20px;
                 min-height: 100vh;
             }
@@ -219,7 +220,8 @@
 
             .blog-thumbnail {
                 margin-top: 40px; 
-                width: 500px; 
+                width: 450px; 
+                height: 450px; 
                 object-fit: cover;
                 border-radius: 12px;
                 margin-bottom: 30px;
@@ -266,12 +268,10 @@
             }
 
             .blog-container {
-                display: flex; /* Sử dụng flexbox để sắp xếp các phần tử con */
-                flex-direction: row; /* Sắp xếp các phần tử con theo hàng ngang */
-                align-items: flex-start; /* Căn chỉnh các phần tử con ở phía trên */
-                max-width: 1200px; /* Ví dụ: giới hạn chiều rộng tối đa của container */
-                margin: 0 auto; /* Căn giữa container nếu cần */
-                padding: 20px; /* Thêm padding cho container */
+                display: flex;
+                gap: 30px;
+                max-width: 1200px;
+                margin: 0 auto;
             }
 
 
@@ -303,10 +303,11 @@
                 display: flex;
                 gap: 50px;
                 margin-bottom: 15px;
+            
             }
 
             .comment-form-row > div {
-                flex: 1;
+                flex: 1; 
             }
 
             .comment-form button {
@@ -376,23 +377,216 @@
             .comment-text {
                 line-height: 1.6;
             }
+
+            .mobile-menu-toggle {
+                display: none;
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                z-index: 1001;
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            .mobile-menu-toggle:hover{
+                opacity: 0.85; 
+            }
+
+            @media (max-width: 768px) {
+                .mobile-menu-toggle {
+                    display: block;
+                }
+
+                .side-bar {
+                    transform: translateX(-100%);
+                }
+
+                .side-bar.mobile-open {
+                    transform: translateX(0);
+                }
+
+                .main-content {
+                    margin-left: 0;
+                    padding: 20px;
+                    padding-top: 70px;
+                }
+
+                .blog-title {
+                    font-size: 1.8rem;
+                }
+
+                .blog-meta {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 10px;
+                }
+
+                .blog-content {
+                    font-size: 1rem;
+                }
+
+                .blog-content h2 {
+                    font-size: 1.5rem;
+                    margin: 30px 0 15px;
+                }
+
+                .comment-form-row {
+                    grid-template-columns: 1fr;
+                    gap: 15px;
+                }
+
+                .comment-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 5px;
+                }
+
+                .table-of-contents {
+                    padding: 20px;
+                }
+
+                .comments-section {
+                    margin-top: 40px;
+                    padding-top: 30px;
+                }
+                
+                .comment-form {
+                    padding-right: 30px; 
+                }
+
+                .comment-form-row {
+                    display : grid; 
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .main-content {
+                    padding: 15px;
+                    padding-top: 60px;
+                }
+
+                .blog-title {
+                    font-size: 1.5rem;
+                }
+
+                .blog-content {
+                    font-size: 0.95rem;
+                }
+
+                .blog-content h2 {
+                    font-size: 1.3rem;
+                }
+
+                .comment-form {
+                    padding: 20px;
+                }
+
+                .comment {
+                    padding: 20px;
+                }
+
+                .back-button {
+                    padding: 10px 16px;
+                }
+            }
+
+            /* Landscape Mobile */
+            @media (max-width: 768px) and (orientation: landscape) {
+                .main-content {
+                    padding-top: 80px;
+                }
+            }
+
+            /* Dark mode adjustments */
+            [data-theme="dark"] .comment-date {
+                color: #aaa;
+            }
+
+            [data-theme="dark"] .blog-meta {
+                color: #aaa;
+            }
+
+            /* Smooth scroll behavior */
+            html {
+                scroll-behavior: smooth;
+            }
+
+            /* Loading animation for images */
+            img {
+                transition: opacity 0.3s ease;
+            }
+
+            img:not([src]) {
+                opacity: 0;
+            }
+            /* General image responsiveness */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Media query for screens up to 768px */
+            @media (max-width: 768px) {
+                .blog-container {
+                    flex-direction: column;
+                }
+
+                .table-of-contents {
+                    order: 0;
+                    position: static;
+                    width: 100%;
+                    margin-right: 0;
+                    padding: 15px;
+                }
+
+                .blog-content {
+                    order: 1;
+                    margin-right: 0;
+                }
+
+                .comments-section {
+                    margin-right: 0;
+                }
+
+                .blog-thumbnail {
+                    height: 300px;
+                }
+            }
+
+            /* Further adjustments for very small screens */
+            @media (max-width: 480px) {
+                .blog-thumbnail {
+                    height: 200px;
+                }
+            }
+
+            
         </style>
     </head>
 
     <body>
-        <aside class = "side-bar">
+        
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <aside class = "side-bar" id = "sidebar">
             <div class = "profile">
                 <img src = "images/personal_avatar.jpg" class = "profile-img" alt = "Avatar của Phạm Hữu Nam">
                 <p class="user-name" style = "font-family: 'IBM Plex Sans';">Phạm Hữu Nam</p>
             </div>
 
-        
             <div class="social-icons">
                 <a href = "https://www.facebook.com/pham.huu.nam.AmnOO/", target = "_blank", title = "Facebook">
                     <img src = "images/facebook-light.png" class = "social-icon" alt = "Facebook">
                 </a>
 
-                <a href = "https://locket.camera/links/F2x8hSAXUQcYy41m7", target = "_blank", title = "Instagram">
+                <a href = "https://locket.camera/links/F2x8hSAXUQcYy41m7", target = "_blank", title = "Locket">
                     <img src = "images/locket.jpg" class = "social-icon" style = "border-radius: 50%;" alt = "Instagram">
                 </a>       
 
@@ -434,9 +628,9 @@
 
             <article>
                 <header class="blog-header">
-                    <h1 class="blog-title"> Metro in HCM </h1>
+                    <h1 class="blog-title"> First time in metro HCM </h1>
                     <div class="blog-meta">
-                        <span><i class="far fa-calendar"></i> 17 Tháng 5, 2025</span>
+                        <span><i class="far fa-calendar"></i> 21 Tháng 5, 2025</span>
                         <span><i class="far fa-clock"></i> 10 phút đọc</span>
                         <span><i class="far fa-folder"></i> Blog, Memories</span>
                     </div>
@@ -457,30 +651,22 @@
 
                     <div class = "blog-content">
                         <h2 id="section1">Giới thiệu</h2>
-                        <p> </p>
+                        <p> Xin chào!! Hôm nay mình sẽ kể cho bạn lần đầu đi metro HCM của mình </p>
+                       
                         <h2 id="section2"> Ban đầu </h2>
 
-                        <p> 
-                             </p>
+
 
 
                         <h2 id = "section3"> Cảm xúc </h2>
                         
-                        <p>
-                        </p>
 
-                        <p>
-                            </p>
                         
                         <h2 id = "section4"> Hồi tưởng </h2>
-                        <p>
 
-                        </p>
 
                         <h2 id = "section5"> Lời kết </h2>
-                        <p>
 
-                        </p>
 
                     </div>
                 </div>
@@ -509,7 +695,7 @@
                     <div class="comment">
                         <div class="comment-header">
                             <div class="commenter-name">Phạm Hữu Nam </div>
-                            <div class="comment-date">20 Tháng 5, 2025</div>
+                            <div class="comment-date">25 Tháng 5, 2025</div>
                         </div>
                         <div class="comment-text">
                             Chưa có code phần comment :)) vì chưa học. 
@@ -527,6 +713,23 @@
         </main>
 
         <script>
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const sidebar = document.getElementById('sidebar');
+
+            mobileMenuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('mobile-open');
+            });
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    if (!sidebar.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                        sidebar.classList.remove('mobile-open');
+                    }
+                }
+            });
+
+
             const themetoggle = document.getElementById('theme-toggle');
 
             if (themetoggle) {
@@ -568,6 +771,7 @@
                     }
                 });
             });
+            
             
             // Smooth scroll for TOC links
             tocLinks.forEach(link => {

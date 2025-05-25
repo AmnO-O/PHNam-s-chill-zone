@@ -130,6 +130,13 @@ const quotes = [
     {
         text: "Bây giờ không làm thì ai sẽ làm điều đó cho mày.",
         meaning: "Hãy tự mình hành động ngay."
+    },
+    {
+        text : "Nhưng kẻ mạnh không phải lúc nào cũng sẽ chiến thắng mà kẻ chiến thắng mới là kẻ mạnh.",
+        meaning : ""
+    },
+    {
+        
     }
 ];
 
