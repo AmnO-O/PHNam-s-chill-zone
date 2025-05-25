@@ -133,10 +133,11 @@ const quotes = [
     },
     {
         text : "Nhưng kẻ mạnh không phải lúc nào cũng sẽ chiến thắng mà kẻ chiến thắng mới là kẻ mạnh.",
-        meaning : ""
+        meaning : "Sức mạnh thực sự nằm ở khả năng chiến thắng, không phải chỉ ở tiềm năng ban đầu."
     },
     {
-        
+        text : "Bởi vì ta còn trẻ. Còn lắm lúc hụt hơi. Nhưng đừng vì như thế. Mà chán ghét cuộc đời",
+        meaning : "Tuổi trẻ có những khó khăn và thử thách, nhưng đừng vì thế mà từ bỏ hay chán nản với cuộc sống."   
     }
 ];
 
