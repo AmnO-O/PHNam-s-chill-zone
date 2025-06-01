@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-775W38XXVZ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-775W38XXVZ');
+        </script>
+
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
@@ -226,6 +237,11 @@
                         <div> <img src = "images/music.png" class = "content-icon"  alt="Giới thiệu"> </div>
                         <span style = "font-size: 16px; font-family: 'IBM Plex Sans';"> Music </span>
                     
+                    </div>   
+
+                    <div class="homepage" onclick="goToAnonymousPage()">
+                        <div> <img src = "images/send.png" class = "content-icon"  alt="Giới thiệu"> </div>
+                        <span style = "font-size: 15px; font-family: 'IBM Plex Sans';"> Message Anonymously </span>
                     </div>   
                 </nav>
 
@@ -456,7 +472,9 @@
                 }
             });
 
-
+            function goToAnonymousPage() {
+                window.location.href = "https://link-it.me/s/5d8034a4-c0bb-4e8c-84ed-2b6f29cbce12?"; // Replace with your actual page URL
+            }
         </script>
     </body>
 </html>
