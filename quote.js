@@ -138,6 +138,17 @@ const quotes = [
     {
         text : "Bởi vì ta còn trẻ. Còn lắm lúc hụt hơi. Nhưng đừng vì như thế. Mà chán ghét cuộc đời",
         meaning : "Tuổi trẻ có những khó khăn và thử thách, nhưng đừng vì thế mà từ bỏ hay chán nản với cuộc sống."   
+    },
+    {
+        text: "Lần gặp mặt tiếp theo, chỉ có thể dựa vào duyên phận.",
+        meaning : ""
+    },
+    {
+        text: "Không thích đồ đắng, n-nhung thích đằng đó ...",
+        meaing: ""
+    },
+    {
+        
     }
 ];
 
