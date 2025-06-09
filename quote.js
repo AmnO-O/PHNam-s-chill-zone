@@ -80,14 +80,6 @@ const quotes = [
         meaning: "Đừng quá dựa dẫm, chỉ có tự lực mới bền vững."
     },
     {
-        text: "Dạo này muốn đi xăm ... Xăm time I miss her",
-        meaning: "Chơi chữ 'xăm' và 'some time' để nói về nỗi nhớ."
-    },
-    {
-        text: "Anh uống hết chai dầu gội Dove, bởi vì nó ghi giúp phục hồi hư tổn từ sâu bên trong",
-        meaning: "Hiểu sai hài hước về công dụng dầu gội."
-    },
-    {
         text: "Thương nhiều hơn là nói nhưng khi anh đã nói là thương thì, như là kiến về tổ cho dù thế nào anh cũng tìm ĐƯỜNG",
         meaning: "Yêu âm thầm nhưng quyết tâm theo đuổi."
     },
@@ -98,14 +90,6 @@ const quotes = [
     {
         text: "Tại sao cậu không quay lại với người yêu cũ ? Bởi vì nếu cậu thấy cùng một cái cây hai lần trong khu rừng, nghĩa là cậu đã bị lạc",
         meaning: "Việc quay lại với người yêu cũ có thể giống như đi lạc trong rừng, lặp lại những vấn đề cũ mà không tìm được lối thoát."
-    },
-    {
-        text: "There's no one to love you when you build your walls too high !",
-        meaning: "Khi bạn tạo ra quá nhiều rào cản và khép kín, sẽ rất khó để người khác có thể yêu thương bạn."
-    },
-    {
-        text: "Lòng anh như con ngựa hoang bởi vì nó không yên !",
-        meaning: "Lòng người xao động, khó kiểm soát."
     },
     {
         text: "Khi bạn khao khát một điều gì đó, cả vũ trụ sẽ hợp lực giúp bạn đạt được điều đó.",
