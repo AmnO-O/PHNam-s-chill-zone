@@ -1,5 +1,4 @@
 
-
 function blogPopUp(){
     const blogTrack = document.querySelector('.blog-track'); 
 
@@ -7,7 +6,7 @@ function blogPopUp(){
         const blogItem = blogTrack.children[i]; 
 
         blogItem.addEventListener('click', () => {
-            const blogLinks = `blog${i}.html`;
+            const blogLinks = `blog${blogTrack.children.length - 1 - i}.html`;
             
             window.open(blogLinks, '_blank'); 
         }); 
