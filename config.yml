@@ -1,0 +1,39 @@
+# --- THÔNG TIN CƠ BẢN ---
+title: Blog của Phạm Hữu Nam
+description: >-
+  Nơi chia sẻ những suy nghĩ, kỷ niệm và kiến thức lập trình.
+author: Phạm Hữu Nam
+email: your-email@example.com
+
+# --- CẤU HÌNH ĐƯỜNG DẪN (QUAN TRỌNG) ---
+# Thay 'username' bằng tên tài khoản GitHub của bạn
+url: "https://username.github.io" 
+
+# Nếu repo của bạn tên là 'username.github.io' thì để trống ""
+# Nếu repo tên khác (ví dụ 'my-blog') thì điền "/my-blog"
+baseurl: ""
+
+# --- CẤU HÌNH BUILD ---
+markdown: kramdown
+highlighter: rouge  # Hỗ trợ tô màu code (syntax highlighting)
+
+# Cấu hình đường dẫn bài viết. 
+# Kết quả sẽ là: domain.com/2025/07/08/how-many-friends/
+permalink: /:year/:month/:day/:title/
+
+# --- PLUGINS (Hỗ trợ SEO và RSS) ---
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# --- LOẠI TRỪ (Không build các file này lên web) ---
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - .github/       # Không cần build file cấu hình action
+  - README.md
