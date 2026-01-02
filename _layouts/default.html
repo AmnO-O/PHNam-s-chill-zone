@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: "Chill Zone" }}</title>
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/hcmus_avatar.jpg' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="{{ '/assets/css/side-left.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/side-right.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/other.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/Carousel.css' | relative_url }}"> 
+    <link rel="stylesheet" href="{{ '/assets/css/blog.css' | relative_url }}">
+
+    <style>
+        .comments-section {
+            margin-top: 50px;
+            padding: 25px;
+            background: var(--card-bg, #fff);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .comments-section h3 {
+            margin-bottom: 20px;
+            border-bottom: 3px solid #064663;
+            display: inline-block;
+            padding-bottom: 5px;
+            color: var(--text-color, #333);
+        }
+        /* Darkmode fix cho comment */
+        body.dark-mode .comments-section {
+            background: #1e1e1e;
+            color: #f0f0f0;
+        }
+        body.dark-mode .comments-section h3 { border-color: #4fc3f7; }
+
+        #HCB_comment_box #hcb_form_send {
+            background-color: var(--primary-color) !important;
+            border-radius: 8px;
+            padding: 8px 20px;
+            color: white;
+        }
+    </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-775W38XXVZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-775W38XXVZ');
+    </script>
+</head>
+
+<body>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    {% include sidebar.html %}
+
+    <main class="side-right">
+        
+        {% unless page.url == "/" %}
+        <a href="{{ '/' | relative_url }}" class="back-button">
+            <i class="fas fa-arrow-left"></i> Quay lại
+        </a>
+        {% endunless %}
+
+        {{ content }}
+
+        {% if page.layout == 'post' or page.url contains "/blog/" %}
+        <section class="comments-section">            
+            <div id="HCB_comment_box">Đang tải bình luận...</div>
+            
+            <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+            <script type="text/javascript" id="hcb">
+                if(!window.hcb_user){hcb_user={};} 
+                (function(){
+                    var s=document.createElement("script"), 
+                        l=(""+window.location).replace(/'/g,"%27"), 
+                        h="https://www.htmlcommentbox.com";
+                    s.setAttribute("type","text/javascript");
+                    s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%247lNBsA%2FUo4XojLAsfBa0Z%2F"+"&opts=16798&num=10");
+                    document.getElementsByTagName("head")[0].appendChild(s);
+                })();
+            </script>
+        </section>
+        {% endif %}
+
+        <footer>
+            <div style="text-align: center; padding: 20px; border-top: 1px solid #ddd; margin-top: 50px;">
+                <p style="font-size: 14px; color: #888;">© 2025 Phạm Hữu Nam</p>
+                <!-- AtoZSEOTools Counter Code START -->
+                <a title="Web Counter">
+                    <img src="https://www.seochecker.tools/website-hit-counter/count/&style=style6&show=u&num=5&uid=i7"  title="Web Counter" alt="AtoZSEOTools Web Counter" />
+                </a>
+                <!-- AtoZSEOTools Counter Code END -->   
+            </div>
+        </footer>
+    </main>
+
+    <script src="{{ '/assets/js/quote.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/music.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/blog.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/Animation.js' | relative_url }}"></script>
+
+    <script>
+        // 1. Mobile Menu
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        if(mobileMenuToggle && sidebar) {
+            mobileMenuToggle.addEventListener('click', () => sidebar.classList.toggle('mobile-open'));
+            
+            // Tự đóng khi click ra ngoài
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 && !sidebar.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                    sidebar.classList.remove('mobile-open');
+                }
+            });
+        }
+
+        // 2. Dark Mode (Lưu trạng thái)
+        const themetoggle = document.getElementById('theme-toggle'); // Đảm bảo bên sidebar có ID này
+        
+        // Kiểm tra ngay khi load trang
+        if(localStorage.getItem('theme') === 'dark'){
+            document.body.classList.add('dark-mode');
+            if(themetoggle) themetoggle.checked = true;
+        }
+
+        if (themetoggle) {
+            themetoggle.addEventListener('change', function(){
+                if(this.checked){
+                    document.body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                }else{
+                    document.body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,9 @@
+---
+layout: none
+---
+
 <!DOCTYPE html>
+
 <html>
     <head>
         <!-- Google tag (gtag.js) -->
@@ -22,200 +27,7 @@
         <link rel="stylesheet" href="side-left.css">
         <link rel="stylesheet" href="side-right.css">
         <link rel="stylesheet" href="other.css">
-
-        <style>
-            /* Màu Light Mode */
-            :root {
-                --bg-color: #013d5a;
-                --text-color: #333333;
-                --card-bg: #ffffff;
-                --sidebar-width: 200px;
-                --button-hover: #2980b9;
-            }
-
-            /* Màu Dark Mode */
-            body.dark-mode {
-                --bg-color: #1e1e1e;
-                --text-color: #f0f0f0;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                font-family: Arial, sans-serif;
-            }
-
-            .container {
-                display: flex;
-            }
-
-            .blog-post.active { 
-                transform: scale(0.98);
-                opacity: 1;
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            }
-
-            .mobile-menu-toggle {
-                display: none;
-                position: fixed;
-                top: 20px;
-                left: 20px;
-                z-index: 1001;
-                background-color: var(--bg-color);
-                color: white;
-                border: none;
-                padding: 10px;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 18px;
-            }
-
-            .mobile-menu-toggle:hover{
-                opacity: 0.85;
-                transform: scale(1.05);                
-            }
-
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .side-left {
-                transform: translateX(-100%);
-            }
-
-            .side-left.mobile-open {
-                transform: translateX(0);
-            }
-
-            .side-right {
-                margin-left: 0;
-                padding: 20px;
-                padding-top: 70px;
-            }
-
-            .welcome-block {
-                padding: 30px 20px;
-            }
-
-            .welcome-block h2 {
-                font-size: 2rem;
-            }
-
-            .welcome-block span {
-                font-size: 1rem;
-            }
-
-            .content-block {
-                padding: 20px;
-                margin-bottom: 30px;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .blog-track {
-                gap: 15px;
-            }
-
-            .blog-post {
-                min-width: 250px;
-                height: 300px;
-            }
-
-            .blog-content {
-                padding: 15px;
-            }
-
-            .quote-container {
-                padding: 20px;
-            }
-
-            .button-general {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .side-right {
-                padding: 15px;
-                padding-top: 60px;
-            }
-
-            .welcome-block {
-                padding: 20px 15px;
-            }
-
-            .welcome-block h2 {
-                font-size: 1.5rem;
-            }
-
-            .content-block {
-                padding: 15px;
-            }
-
-            .blog-post {
-                min-width: 220px;
-                height: 280px;
-            }
-
-            .blog-track {
-                gap: 10px;
-            }
-
-            .section-title {
-                font-size: 1.3rem;
-            }
-
-            .quote-text {
-                font-size: 1rem;
-            }
-
-            .quote-meaning {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Landscape Mobile */
-        @media (max-width: 768px) and (orientation: landscape) {
-            .side-right {
-                padding-top: 80px;
-            }
-            
-            .welcome-block h2 {
-                font-size: 1.8rem;
-            }
-        }
-
-        footer {
-            background-color: #333; /* Màu nền cho footer */
-            color: #fff; /* Màu chữ cho footer */
-            padding: 20px;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            border-top: 1px solid #555; /* Đường viền trên footer */
-        }
-        footer p {
-            margin: 5px 0;
-        }
-        footer a {
-            color: #00bfff; /* Màu liên kết */
-            text-decoration: none; /* Bỏ gạch chân liên kết */
-        }
-
-        footer a:hover {
-            text-decoration: underline; /* Gạch chân khi di chuột */
-        }
-
-        /* Style cho bộ đếm */
-        footer img {
-            vertical-align: middle; /* Căn giữa ảnh với chữ */
-            margin-left: 10px;
-        }
-        </style>
-
+        <link rel="stylesheet" href="/assets/css/index.css">
     </head>
 
     <body>
@@ -333,136 +145,37 @@
 
 
                 <!--Blog posts section-->
-                <div class = "content-block">
-                    <h2 class = "section-title"> My story </h2>
+                <div class="content-block">
+                    <h2 class="section-title"> My story </h2>
 
-                    <div class = "blog-container">
-                        
-                        <div class = "blog-track">
-                            <div class = "blog-post">
-                                <img src = "images/Blog-images/blog5.jpg" class = "blog-img" alt = "Blog post image">
+                    <div class="blog-container">
+                        <div class="blog-track">
+                            {% for post in site.posts %}
+                            <div class="blog-post" onclick="location.href='{{ post.url | relative_url }}'" style="cursor: pointer;">
+                                <img src="{{ post.image | relative_url | default: 'images/Blog-images/default.jpg' }}" class="blog-img" alt="{{ post.title }}">
                                 
-                                <div class = "blog-content"> 
-                                    <h3 style = "font-size: 18px; text-align: center; font-weight: 600; margin-bottom: 8px; color: black"> 
-                                       I don't know </h3>
+                                <div class="blog-content"> 
+                                    <h3 style="font-size: 18px; text-align: center; font-weight: 600; margin-bottom: 8px; color: black"> 
+                                        {{ post.title }} 
+                                    </h3>
                                 
+                                    <div style="font-size: 14px; color: inherit; opacity: 0.8; color: #333;">
+                                        {{ post.excerpt | strip_html | truncate: 100 }}
+                                    </div>
                                 
-                                <div style = "font-size: 14px; color: inherit; opacity: 0.8; color: #333;">
-                                    Just like a game ...</div>
-                                
-                                    <div style = "display : flex; justify-content: space-between; margin-top: 10px; font-size: 14px; 
-                                                color: #333;">
-                                        <span>1 Tháng 9, 2025</span>
-                                        <span>10 phút đọc</span>
+                                    <div style="display : flex; justify-content: space-between; margin-top: 10px; font-size: 14px; color: #333;">
+                                        <span>{{ post.date | date: "%d/%m/%Y" }}</span>
+                                        <span>{{ post.reading_time | default: '10' }} phút đọc</span>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class = "blog-post">
-                                <img src = "images/Blog-images/blog4.jpg" class = "blog-img" alt = "Blog post image">
-                                
-                                <div class = "blog-content"> 
-                                    <h3 style = "font-size: 18px; text-align: center; font-weight: 600; margin-bottom: 8px; color: black"> 
-                                       How many friends do you have ?</h3>
-                                
-                                
-                                <div style = "font-size: 14px; color: inherit; opacity: 0.8; color: #333;">
-                                    It turns out we ...</div>
-                                
-                                    <div style = "display : flex; justify-content: space-between; margin-top: 10px; font-size: 14px; 
-                                                color: #333;">
-                                        <span>21 Tháng 6, 2025</span>
-                                        <span>10 phút đọc</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class = "blog-post">
-                                <img src = "images/Blog-images/blog2.png" class = "blog-img" alt = "Blog post image">
-                                
-                                <div class = "blog-content"> 
-                                    <h3 style = "font-size: 18px; text-align: center; font-weight: 600; margin-bottom: 8px; color: black"> 
-                                        Completely Different ..</h3>
-                                
-                                
-                                <div style = "font-size: 14px; color: inherit; opacity: 0.8; color: #333;">
-                                    It's time to improve ...</div>
-                                
-                                    <div style = "display : flex; justify-content: space-between; margin-top: 10px; font-size: 14px; 
-                                                color: #333;">
-                                        <span>21 Tháng 6, 2025</span>
-                                        <span>10 phút đọc</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class = "blog-post">
-                                <img src = "images/Blog-images/blog0-gbobk22.jpg" class = "blog-img" alt = "Blog post image">
-                                
-                                <div class = "blog-content"> 
-                                    <h3 style = "font-size: 18px; text-align: center; font-weight: 600; margin-bottom: 8px; color: black"> 
-                                        Goodbye oldbie 22 TI </h3>
-                                
-                                
-                                <div style = "font-size: 14px; color: inherit; opacity: 0.8; color: #333;">
-                                    Một ngày đẹp trời, Nam về thăm trường, các em và ...</div>
-                                
-                                    <div style = "display : flex; justify-content: space-between; margin-top: 10px; font-size: 14px; 
-                                                color: #333;">
-                                        <span>17 Tháng 5, 2025</span>
-                                        <span>10 phút đọc</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            
-                            <div class = "blog-post">
-                                <img src = "images/Blog-images/blog1-metro.jpg" class = "blog-img" alt = "Blog post image">
-                                
-                                <div class = "blog-content"> 
-                                    <h3 style = "font-size: 18px; text-align: center; font-weight: 600; margin-bottom: 8px; color: black"> 
-                                        First time in metro </h3>
-                                
-                                
-                                <div style = "font-size: 12px; color: inherit; opacity: 0.8; color: #333;">
-                                    Chuyến tàu mà anh hay đi hàng ngày là lúc xưa và chuyến nào ông Trời cũng trút mưa...</div>
-                                
-                                    <div style = "display : flex; justify-content: space-between; margin-top: 10px; font-size: 14px; 
-                                                color: #333;">
-                                        <span>21 Tháng 5, 2025</span>
-                                        <span>10 phút đọc</span>
-                                    </div>
-                                </div>
-                            </div>
-                        
-
-                            
-                            <div class = "blog-post">
-                                <img src = "images/Blog-images/blog02-hien_mau.jpg" class = "blog-img" alt = "Blog post image">
-                                
-                                <div class = "blog-content"> 
-                                    <h3 style = "font-size: 18px; text-align: center; font-weight: 600; margin-bottom: 8px; color: black"> 
-                                        Lần đầu đi hiến máu tình nguyện </h3>
-                                
-                                
-                                <div style = "font-size: 14px; color: inherit; opacity: 0.8; color: #333;">
-                                    Giọt máu vàng ...</div>
-                                
-                                    <div style = "display : flex; justify-content: space-between; margin-top: 10px; font-size: 14px; 
-                                                color: #333;">
-                                        <span>23 Tháng 5, 2025</span>
-                                        <span>10 phút đọc</span>
-                                    </div>
-                                </div>
-                            </div>
-
+                            {% endfor %}
                         </div>
-
                     </div>
 
-                    <div style = "display: flex; justify-content: center; gap: 20px">
-                        <button class = "prev-button"> &#10094; </button>
-                        <button class = "next-button"> &#10095; </button>
+                    <div style="display: flex; justify-content: center; gap: 20px">
+                        <button class="prev-button"> &#10094; </button>
+                        <button class="next-button"> &#10095; </button>
                     </div>  
                 </div>
                 
@@ -473,9 +186,11 @@
                 </div>
 
                 <footer>
-                    <a>
-                        <img src="https://toolsbox.com/website-hit-counter/count/&style=style12&show=p&num=7&uid=va"  title="Web Counter" alt="AtoZSEOTools Web Counter" />
+                    <!-- AtoZSEOTools Counter Code START -->
+                    <a title="Web Counter">
+                        <img src="https://www.seochecker.tools/website-hit-counter/count/&style=style3&show=p&num=5&uid=i5"  title="Web Counter" alt="AtoZSEOTools Web Counter" />
                     </a>
+                    <!-- AtoZSEOTools Counter Code END -->
                 </footer>
             </main>
         </div>

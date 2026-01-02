@@ -1,0 +1,293 @@
+.side-right {
+    flex : 1; 
+    padding: 20px;
+    min-height: 100vh;
+    
+    margin-left: var(--sidebar-width);
+
+    color: #013d5a;
+    background-color: #f5f5f5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-y: auto;
+    
+    overflow-x: hidden;
+}
+
+body.dark-mode .side-right{
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+.side-right h1{
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #013d5a;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+body.dark-mode .side-right h1 {
+    color: #4fc3f7;
+}
+
+/* The underline of the header*/
+.side-right h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #013d5a;
+    border-radius: 2px;
+}
+
+body.dark-mode .side-right h1::after {
+    background-color: #4fc3f7;
+}
+
+.side-right p{
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+body.dark-mode .side-right p {
+    color: #e0e0e0;
+}
+
+
+/* This part for welcome-block*/
+
+.welcome-block{
+    position: relative;
+    padding: 2.5rem;
+    border-radius: 15px;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, #013d5a, #025e87);
+    color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body.dark-mode .welcome-block {
+    background: linear-gradient(135deg, #0277bd, #039be5);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-block h2 {
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.welcome-block p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* This part for content-block*/
+
+.content-block {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--card-bg);
+    box-shadow:  0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+body.dark-mode .content-block {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+/* This part for section-title*/
+.section-title{
+    color : var(--text-color); 
+    text-align: center; 
+    margin-bottom: 20px; 
+    font-size: 25px; 
+    font-weight: 600; 
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #013d5a;
+}
+
+
+body.dark-mode .section-title::after{
+    background-color: green;
+}
+
+/*Button for general*/
+
+.button-general{
+    border-radius: 80px;
+    height: 50px; 
+    color: white; 
+    border : none; 
+    cursor: pointer; 
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.button-general:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.05);
+}
+
+
+/*This is quote part*/
+
+.quote-container{
+    border-radius: 12px; 
+    padding : 20px; 
+    text-align: center; 
+    margin: 0 auto;
+    background-color: #f9f9f9; 
+    max-width: 600px;
+    box-shadow:  0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.quote-text {
+    font-size: 20px;
+    color: #333333;
+    margin-bottom: 15px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.quote-meaning {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+body.dark-mode .quote-container {
+    background-color: #2c2c2c;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+/*This part for blog*/
+
+.blog-container{
+    width: 100% ;
+    position: relative; 
+    display: flex; 
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+
+.blog-post{
+    width: 280px;
+    height: 320px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    transform: scale(0.85);
+    opacity: 0.8; 
+}
+
+
+.blog-img{
+    height: 180px; 
+    width: 100%; 
+    object-fit: cover;
+}
+
+.blog-content{
+    padding: 15px; 
+}
+
+.blog-track{
+    display : flex; 
+    transition: transform 0.5s ease;
+    cursor: pointer; 
+}
+
+.blog-post:hover{
+    opacity: 1; 
+    transform: scale(1);
+}
+
+.blog-post:active{
+    transform: scale(0.95);
+    opacity: 1;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .blog-post{
+    background-color: rgb(255, 255, 255);
+}
+
+
+.carousel-item {
+    min-width: 280px;
+    height: 320px;
+    margin: 0 15px;
+    
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    transform: scale(0.85);
+    opacity: 0.8;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    cursor: grab;
+}
+
+
+
+
+/* general setting */
+@media (max-width: 768px) {
+    .side-right {
+        padding: 1.5rem;
+    }
+    
+    .side-right h1 {
+        font-size: 2rem;
+    }
+    
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .welcome-block {
+        padding: 1.5rem;
+    }
+    
+    .welcome-block h2 {
+        font-size: 1.8rem;
+    }
+}

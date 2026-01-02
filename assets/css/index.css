@@ -1,0 +1,191 @@
+
+    /* Màu Light Mode */
+    :root {
+        --bg-color: #013d5a;
+        --text-color: #333333;
+        --card-bg: #ffffff;
+        --sidebar-width: 200px;
+        --button-hover: #2980b9;
+    }
+
+    /* Màu Dark Mode */
+    body.dark-mode {
+        --bg-color: #1e1e1e;
+        --text-color: #f0f0f0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    .blog-post.active { 
+        transform: scale(0.98);
+        opacity: 1;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1001;
+        background-color: var(--bg-color);
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .mobile-menu-toggle:hover{
+        opacity: 0.85;
+        transform: scale(1.05);                
+    }
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .side-left {
+        transform: translateX(-100%);
+    }
+
+    .side-left.mobile-open {
+        transform: translateX(0);
+    }
+
+    .side-right {
+        margin-left: 0;
+        padding: 20px;
+        padding-top: 70px;
+    }
+
+    .welcome-block {
+        padding: 30px 20px;
+    }
+
+    .welcome-block h2 {
+        font-size: 2rem;
+    }
+
+    .welcome-block span {
+        font-size: 1rem;
+    }
+
+    .content-block {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .blog-track {
+        gap: 15px;
+    }
+
+    .blog-post {
+        min-width: 250px;
+        height: 300px;
+    }
+
+    .blog-content {
+        padding: 15px;
+    }
+
+    .quote-container {
+        padding: 20px;
+    }
+
+    .button-general {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .side-right {
+        padding: 15px;
+        padding-top: 60px;
+    }
+
+    .welcome-block {
+        padding: 20px 15px;
+    }
+
+    .welcome-block h2 {
+        font-size: 1.5rem;
+    }
+
+    .content-block {
+        padding: 15px;
+    }
+
+    .blog-post {
+        min-width: 220px;
+        height: 280px;
+    }
+
+    .blog-track {
+        gap: 10px;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .quote-text {
+        font-size: 1rem;
+    }
+
+    .quote-meaning {
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .side-right {
+        padding-top: 80px;
+    }
+    
+    .welcome-block h2 {
+        font-size: 1.8rem;
+    }
+}
+
+footer {
+    background-color: #333; /* Màu nền cho footer */
+    color: #fff; /* Màu chữ cho footer */
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    border-top: 1px solid #555; /* Đường viền trên footer */
+}
+footer p {
+    margin: 5px 0;
+}
+footer a {
+    color: #00bfff; /* Màu liên kết */
+    text-decoration: none; /* Bỏ gạch chân liên kết */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Gạch chân khi di chuột */
+}
+
+/* Style cho bộ đếm */
+footer img {
+    vertical-align: middle; /* Căn giữa ảnh với chữ */
+    margin-left: 10px;
+}
