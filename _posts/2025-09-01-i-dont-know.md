@@ -3,7 +3,7 @@ layout: default
 title: "I don't know"
 date: 2025-09-01
 description: "I don't know"
-image: "images/Blog-images/blog5.jpg"
+image: "assets/images/Blog-images/blog5.jpg"
 reading_time: 10
 categories: [Blog, Memories]
 ---

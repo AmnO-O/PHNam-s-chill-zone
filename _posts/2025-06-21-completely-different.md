@@ -3,7 +3,7 @@ layout: default
 title: "Completely different"
 date: 2025-06-21
 description: "A shift in perspective about learning English and social media habits."
-image: "images/Blog-images/blog2.png"
+image: "assets/images/Blog-images/blog2.png"
 categories: [Blog, Memories]
 ---
 

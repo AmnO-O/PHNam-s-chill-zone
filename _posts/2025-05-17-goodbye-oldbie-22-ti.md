@@ -3,7 +3,7 @@ layout: default
 title: "Goodbye oldbie 22 TI [2]"
 date: 2025-05-17
 description: "Blog về Goodbye oldbie 22 TI"
-image: "images/Blog-images/blog0-all.jpg"
+image: "assets/images/Blog-images/blog0-all.jpg"
 categories: [Blog, Memories]
 ---
 
@@ -27,7 +27,7 @@ Thì đấy là phần trò chơi, kiểu khi chơi xong ấy mình đi dạo tr
 Xong lúc mình bước lại thì các em bảo vô lớp của k24 Tin. Mấy đứa này giữ lớp sạch dữ =))), vô nhìn sạch thật. Đúng là nhà sạch thì mát. Vô ổn định chỗ ngồi, xong các em chiếu siêu phẩm cho mọi người coi :)) nói chung làm hay lắm ấy tôi đánh giá 10/10. Mà mình ngồi đấy mình thấy mình có nhiều pha cư xử còn trẻ con quá =)). Cười suốt nhìn như cợt nhả, ôk tôi sẽ trở nên nghiêm khắc hơn và trưởng thành hơn ! Mỗi ngày một bài học mà, đi cái buổi này cũng giúp mình tốt hơn mà. =))).
 
 ## Hồi tưởng
-![Tâm sự tuổi hồng]({{ site.baseurl }}/images/Blog-images/blog0-tam_su.jpg)
+![Tâm sự tuổi hồng]({{ site.baseurl }}/assets/images/Blog-images/blog0-tam_su.jpg)
 
 
 Thì xong các em ra khỏi lớp thì trời cũng hơi tối đi rồi, xong mấy đứa ra ngồi vòng tròn xong bật nhạc hát ấy =))). Mình thấy y như bọn mình năm ngoái, ngồi vòng vòng xong đi hát xong nắm tay nhau hát =))). Damn, thật hoài niệm nhưng mà mình cảm giác mình không thể sung như vậy được nữa. Có cảm giác nhiệt huyết tuổi trẻ đã giảm đi một chút. Sợ là mỗi năm sẽ giảm từ từ =)), nhưng mà thấy Như với Thy vẫn sung lắm =))). 

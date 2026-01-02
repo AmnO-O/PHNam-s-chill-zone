@@ -3,7 +3,7 @@ layout: default
 title: "How many friends do you have ?"
 date: 2025-07-08
 description: "Friends - A reflection on social connections"
-image: "images/Blog-images/blog4.jpg"
+image: "assets/images/Blog-images/blog4.jpg"
 categories: [Blog, Memories]
 ---
 
