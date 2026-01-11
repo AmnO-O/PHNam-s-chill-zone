@@ -1,39 +1,280 @@
-.prev-button{
+/* Navigation Buttons */
+.prev-button,
+.next-button {
     background-color: white;
-    color: black; 
-
-    border-radius: 50%; 
-
-    display: flex; 
+    color: black;
+    border-radius: 50%;
+    display: flex;
     justify-content: center;
-    align-items: center; 
-    height: 40px; 
-    width: 40px; 
-
-    transition: all 0.3s ease; 
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
 }
 
-.prev-button:hover{        
+.prev-button::before,
+.next-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.prev-button:hover::before,
+.next-button:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.prev-button:hover,
+.next-button:hover {
     background-color: #f0f0f0;
-    transform: scale(1.1);
+    transform: scale(1.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.next-button{
-    background-color: white;
-    color: black; 
+.prev-button:active,
+.next-button:active {
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
 
-    border-radius: 50%; 
+.prev-button i,
+.next-button i {
+    position: relative;
+    z-index: 1;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
 
-    display: flex; 
+.prev-button:hover i {
+    transform: translateX(-2px);
+}
+
+.next-button:hover i {
+    transform: translateX(2px);
+}
+
+/* Dark mode support */
+body.dark-mode .prev-button,
+body.dark-mode .next-button {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .prev-button:hover,
+body.dark-mode .next-button:hover {
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Button container for better layout */
+.navigation-buttons {
+    display: flex;
+    gap: 10px;
     justify-content: center;
-    align-items: center; 
-    height: 40px; 
-    width: 40px; 
-
-    transition: all 0.3s ease; 
+    align-items: center;
+    margin: 20px 0;
 }
 
-.next-button:hover{
-    background-color: #f0f0f0;
-    transform: scale(1.1);
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .prev-button,
+    .next-button {
+        height: 38px;
+        width: 38px;
+    }
+
+    .prev-button i,
+    .next-button i {
+        font-size: 15px;
+    }
+
+    .navigation-buttons {
+        gap: 8px;
+        margin: 15px 0;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    .prev-button,
+    .next-button {
+        height: 36px;
+        width: 36px;
+    }
+
+    .prev-button i,
+    .next-button i {
+        font-size: 14px;
+    }
+
+    .navigation-buttons {
+        gap: 6px;
+        margin: 12px 0;
+    }
+
+    .prev-button:hover,
+    .next-button:hover {
+        transform: scale(1.1);
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+    .prev-button,
+    .next-button {
+        height: 34px;
+        width: 34px;
+    }
+
+    .prev-button i,
+    .next-button i {
+        font-size: 13px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .prev-button,
+    .next-button {
+        min-height: 44px;
+        min-width: 44px;
+        height: 44px;
+        width: 44px;
+    }
+
+    .prev-button::before,
+    .next-button::before {
+        display: none;
+    }
+
+    .prev-button:hover,
+    .next-button:hover {
+        transform: scale(1);
+        background-color: white;
+    }
+
+    body.dark-mode .prev-button:hover,
+    body.dark-mode .next-button:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .prev-button:active,
+    .next-button:active {
+        transform: scale(0.95);
+        background-color: #e0e0e0;
+    }
+
+    body.dark-mode .prev-button:active,
+    body.dark-mode .next-button:active {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Accessibility - Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .prev-button,
+    .next-button {
+        transition: none;
+    }
+
+    .prev-button::before,
+    .next-button::before {
+        transition: none;
+    }
+
+    .prev-button:hover,
+    .next-button:hover {
+        transform: none;
+    }
+
+    .prev-button i,
+    .next-button i {
+        transition: none;
+    }
+
+    .prev-button:hover i,
+    .next-button:hover i {
+        transform: none;
+    }
+}
+
+/* Disabled state */
+.prev-button:disabled,
+.next-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Focus states for keyboard navigation */
+.prev-button:focus-visible,
+.next-button:focus-visible {
+    outline: 2px solid #4cb9e7;
+    outline-offset: 2px;
+}
+
+/* Additional utility classes */
+.button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.button-group-vertical {
+    flex-direction: column;
+}
+
+.button-group-horizontal {
+    flex-direction: row;
+}
+
+/* Positioning variants */
+.navigation-fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.navigation-sticky {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .navigation-fixed {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .navigation-sticky {
+        top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navigation-fixed {
+        bottom: 12px;
+        right: 12px;
+    }
+
+    .navigation-sticky {
+        top: 12px;
+    }
 }
