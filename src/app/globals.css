@@ -1,0 +1,469 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core palette */
+    --background: #F8FAFC;
+    --foreground: #0F172A;
+    --surface: #FFFFFF;
+    --surface-elevated: #FFFFFF;
+    --surface-hover: #F1F5F9;
+
+    /* Text hierarchy */
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-tertiary: #94A3B8;
+
+    /* Cards */
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
+
+    /* Brand colors */
+    --primary: #4F46E5;
+    --primary-hover: #4338CA;
+    --primary-light: #EEF2FF;
+    --accent: #EC4899;
+    --accent-light: #FDF2F8;
+
+    /* Semantic */
+    --secondary: #F1F5F9;
+    --muted: #F8FAFC;
+    --muted-foreground: #64748B;
+    --border: #E2E8F0;
+    --border-hover: #CBD5E1;
+    --ring: #4F46E5;
+
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 24px rgba(79, 70, 229, 0.15);
+  }
+
+  .dark {
+    --background: #0B0F1A;
+    --foreground: #F1F5F9;
+    --surface: #111827;
+    --surface-elevated: #1E293B;
+    --surface-hover: #1E293B;
+
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-tertiary: #64748B;
+
+    --card: #111827;
+    --card-foreground: #F1F5F9;
+
+    --primary: #6366F1;
+    --primary-hover: #818CF8;
+    --primary-light: rgba(99, 102, 241, 0.12);
+    --accent: #F472B6;
+    --accent-light: rgba(244, 114, 182, 0.12);
+
+    --secondary: #1E293B;
+    --muted: #151D30;
+    --muted-foreground: #94A3B8;
+    --border: #1E293B;
+    --border-hover: #334155;
+    --ring: #6366F1;
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 24px rgba(99, 102, 241, 0.2);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased min-h-screen;
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Accessible focus styles */
+  *:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Text selection */
+  ::selection {
+    background-color: var(--primary-light);
+    color: var(--text-primary);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Scrollbar
+   ═══════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(148, 163, 184, 0.7);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(71, 85, 105, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 116, 139, 0.8);
+}
+
+/* ═══════════════════════════════════════════
+   Card System
+   ═══════════════════════════════════════════ */
+@layer components {
+  .card {
+    @apply bg-surface rounded-2xl border border-border;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .card-elevated {
+    @apply bg-surface-elevated rounded-2xl border border-border;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .card-interactive {
+    @apply bg-surface rounded-2xl border border-border cursor-pointer;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .card-interactive:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .card-interactive:active {
+    transform: translateY(0);
+  }
+
+  /* Glass cards */
+  .glass-card {
+    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/60 dark:border-slate-800/60 rounded-2xl;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .glass-card-interactive {
+    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/60 dark:border-slate-800/60 rounded-2xl cursor-pointer;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .glass-card-interactive:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-primary {
+    @apply badge text-primary;
+    background-color: var(--primary-light);
+  }
+
+  .badge-accent {
+    @apply badge text-accent;
+    background-color: var(--accent-light);
+  }
+
+  .badge-muted {
+    @apply badge bg-secondary text-text-secondary;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-accent;
+  }
+
+  .gradient-text-warm {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-rose-200 to-indigo-200;
+  }
+
+  /* Section Divider */
+  .section-divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-border to-transparent;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Animations
+   ═══════════════════════════════════════════ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes equalizer1 {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+@keyframes equalizer2 {
+  0%, 100% { height: 14px; }
+  50% { height: 6px; }
+}
+
+@keyframes equalizer3 {
+  0%, 100% { height: 8px; }
+  50% { height: 16px; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.4s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.animate-gradientShift {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-eq1 {
+  animation: equalizer1 0.8s ease-in-out infinite;
+}
+
+.animate-eq2 {
+  animation: equalizer2 0.6s ease-in-out infinite;
+}
+
+.animate-eq3 {
+  animation: equalizer3 0.7s ease-in-out infinite;
+}
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ═══════════════════════════════════════════
+   Blog Prose Styling
+   ═══════════════════════════════════════════ */
+.prose-custom {
+  @apply text-text-secondary leading-[1.8] text-base;
+}
+
+.prose-custom h1,
+.prose-custom h2,
+.prose-custom h3,
+.prose-custom h4 {
+  @apply font-bold text-text-primary tracking-tight mt-8 mb-4;
+}
+
+.prose-custom h2 {
+  @apply text-2xl md:text-3xl pb-3 border-b border-border;
+}
+
+.prose-custom h3 {
+  @apply text-xl md:text-2xl;
+}
+
+.prose-custom h4 {
+  @apply text-lg md:text-xl;
+}
+
+.prose-custom p {
+  @apply mb-5 leading-[1.8];
+}
+
+.prose-custom a {
+  @apply text-primary font-medium underline underline-offset-2 transition-colors;
+}
+
+.prose-custom blockquote {
+  @apply border-l-4 border-primary px-5 py-3 italic my-6 rounded-r-xl text-base;
+  background-color: var(--primary-light);
+}
+
+.prose-custom ul {
+  @apply list-disc pl-6 mb-5 space-y-2;
+}
+
+.prose-custom ol {
+  @apply list-decimal pl-6 mb-5 space-y-2;
+}
+
+.prose-custom li {
+  @apply leading-relaxed;
+}
+
+.prose-custom img {
+  @apply rounded-2xl shadow-md my-6 w-full max-h-[500px] object-cover border border-border;
+}
+
+.prose-custom code {
+  @apply bg-secondary text-primary px-2 py-0.5 rounded-md text-sm font-mono;
+}
+
+.prose-custom pre {
+  @apply bg-slate-900 dark:bg-slate-950 text-slate-100 p-5 rounded-xl overflow-x-auto my-6 text-sm border border-slate-800;
+}
+
+.prose-custom pre code {
+  @apply bg-transparent text-inherit p-0 rounded-none;
+}
+
+.prose-custom hr {
+  @apply my-8 border-none h-px bg-gradient-to-r from-transparent via-border to-transparent;
+}
+
+.prose-custom table {
+  @apply w-full my-6 text-sm;
+}
+
+.prose-custom th {
+  @apply text-left p-3 bg-secondary font-semibold text-text-primary border-b-2 border-border;
+}
+
+.prose-custom td {
+  @apply p-3 border-b border-border;
+}
+
+.prose-custom strong {
+  @apply font-bold text-text-primary;
+}
+
+/* ═══════════════════════════════════════════
+   Reading Font Sizes (Dynamic User Preferences)
+   ═══════════════════════════════════════════ */
+.text-reading-sm p,
+.text-reading-sm li,
+.text-reading-sm blockquote {
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.text-reading-base p,
+.text-reading-base li,
+.text-reading-base blockquote {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.text-reading-lg p,
+.text-reading-lg li,
+.text-reading-lg blockquote {
+  font-size: 1.15rem;
+  line-height: 1.85;
+}
+
+.text-reading-xl p,
+.text-reading-xl li,
+.text-reading-xl blockquote {
+  font-size: 1.3rem;
+  line-height: 1.95;
+}
