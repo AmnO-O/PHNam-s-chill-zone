@@ -3,24 +3,25 @@ export interface Comment {
   post_slug: string;
   author_name: string;
   content: string;
-  avatar_id?: number;
   created_at: string;
 }
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+const SUPABASE_KEY =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+  "";
 
 export const isSupabaseConfigured = () => {
   return Boolean(
     SUPABASE_URL &&
-    SUPABASE_ANON_KEY &&
+    SUPABASE_KEY &&
     !SUPABASE_URL.includes("your-project")
   );
 };
 
 // Fetch comments for a post
 export async function getPostComments(slug: string): Promise<Comment[]> {
-  // If Supabase is configured in env, fetch from Supabase REST API
   if (isSupabaseConfigured()) {
     try {
       const res = await fetch(
@@ -29,8 +30,8 @@ export async function getPostComments(slug: string): Promise<Comment[]> {
         )}&order=created_at.desc`,
         {
           headers: {
-            apikey: SUPABASE_ANON_KEY,
-            Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+            apikey: SUPABASE_KEY,
+            Authorization: `Bearer ${SUPABASE_KEY}`,
           },
           cache: "no-store",
         }
@@ -41,7 +42,7 @@ export async function getPostComments(slug: string): Promise<Comment[]> {
         return data as Comment[];
       }
     } catch (err) {
-      console.warn("Supabase fetch error, using local fallback:", err);
+      console.warn("Supabase fetch error, using fallback:", err);
     }
   }
 
@@ -64,15 +65,14 @@ export async function getPostComments(slug: string): Promise<Comment[]> {
 export async function createPostComment(
   slug: string,
   authorName: string,
-  content: string,
-  avatarId: number = 1
+  content: string
 ): Promise<{ success: boolean; comment?: Comment; error?: string }> {
+  const cleanName = authorName.trim() || "Ẩn danh";
   const newComment: Comment = {
     id: `c_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
     post_slug: slug,
-    author_name: authorName.trim() || "Người bạn ẩn danh",
+    author_name: cleanName,
     content: content.trim(),
-    avatar_id: avatarId,
     created_at: new Date().toISOString(),
   };
 
@@ -81,8 +81,8 @@ export async function createPostComment(
       const res = await fetch(`${SUPABASE_URL}/rest/v1/comments`, {
         method: "POST",
         headers: {
-          apikey: SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`,
           "Content-Type": "application/json",
           Prefer: "return=representation",
         },
@@ -95,7 +95,7 @@ export async function createPostComment(
         return { success: true, comment: created };
       }
     } catch (err) {
-      console.warn("Supabase insert error, falling back to local:", err);
+      console.warn("Supabase insert error, saving to local fallback:", err);
     }
   }
 

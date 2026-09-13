@@ -24,7 +24,6 @@ export function BlogReaderContainer({
   const [fontSize, setFontSize] = useState<FontSizeOption>("base");
   const [fontFamily, setFontFamily] = useState<FontFamilyOption>("sans");
   const [isZenMode, setIsZenMode] = useState<boolean>(false);
-  const [isTocOpen, setIsTocOpen] = useState<boolean>(false);
   const [commentCount, setCommentCount] = useState<number>(0);
 
   // Load preferences from localStorage on mount
@@ -43,7 +42,6 @@ export function BlogReaderContainer({
     }
   }, []);
 
-  // Save changes to localStorage
   const handleSetFontSize = (size: FontSizeOption) => {
     setFontSize(size);
     try {
@@ -84,11 +82,6 @@ export function BlogReaderContainer({
     }
   };
 
-  // Check if content has headings for TOC
-  const hasHeadings =
-    post.contentHtml.includes("<h2") || post.contentHtml.includes("<h3");
-
-  // Dynamic font size classes for the prose
   const fontSizeClasses: Record<FontSizeOption, string> = {
     sm: "text-reading-sm",
     base: "text-reading-base",
@@ -96,205 +89,198 @@ export function BlogReaderContainer({
     xl: "text-reading-xl",
   };
 
-  // Dynamic font family classes
   const fontFamilyClass =
     fontFamily === "serif"
       ? "font-serif tracking-normal"
       : "font-sans";
 
   return (
-    <div
-      className={`transition-all duration-300 ${
-        isZenMode
-          ? "fixed inset-0 z-50 overflow-y-auto bg-background p-4 sm:p-8 md:p-12"
-          : "space-y-6"
-      }`}
-    >
-      {/* Top Zen Mode Exit Bar (Only visible in Zen Mode) */}
-      {isZenMode && (
-        <div className="max-w-3xl mx-auto flex items-center justify-between py-2 mb-6 border-b border-border">
-          <div className="flex items-center gap-2 text-xs font-semibold text-rose-500">
-            <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
-            <span>Chế độ đọc tập trung (Nhấn Esc để thoát)</span>
-          </div>
-          <button
-            onClick={() => setIsZenMode(false)}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-secondary text-xs font-semibold text-text-primary hover:bg-surface-hover transition-colors"
-          >
-            <X className="w-3.5 h-3.5" />
-            <span>Thoát Focus</span>
-          </button>
-        </div>
-      )}
-
-      {/* Standard Header Navigation (hidden in Zen Mode) */}
-      {!isZenMode && (
-        <div className="flex items-center justify-between">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl card text-xs font-semibold text-text-secondary hover:text-primary hover:border-primary/40 transition-all shadow-xs group"
-          >
-            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
-            <span>Tất cả bài viết</span>
-          </Link>
-        </div>
-      )}
-
-      {/* Reading Controls Toolbar */}
-      <div className={isZenMode ? "max-w-3xl mx-auto mb-6" : ""}>
-        <BlogReadingToolbar
-          fontSize={fontSize}
-          setFontSize={handleSetFontSize}
-          fontFamily={fontFamily}
-          setFontFamily={handleSetFontFamily}
-          isZenMode={isZenMode}
-          toggleZenMode={toggleZenMode}
-          isTocOpen={isTocOpen}
-          toggleToc={() => setIsTocOpen(!isTocOpen)}
-          hasHeadings={hasHeadings}
-        />
-      </div>
-
-      {/* Table of Contents Box */}
-      <div className={isZenMode ? "max-w-3xl mx-auto" : ""}>
-        <BlogTableOfContents
-          contentHtml={post.contentHtml}
-          isOpen={isTocOpen}
-          onClose={() => setIsTocOpen(false)}
-        />
-      </div>
-
-      {/* Article Card */}
-      <article
-        className={`card rounded-3xl overflow-hidden p-5 sm:p-8 md:p-10 ${
-          isZenMode
-            ? "max-w-3xl mx-auto shadow-xl border-border bg-surface"
-            : ""
-        }`}
-      >
-        {/* Author Header & Publication Metadata */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-border mb-6">
-          <div className="flex items-center gap-3">
-            <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-primary/20">
-              <Image
-                src="/assets/images/hcmus_avatar.jpg"
-                alt="Phạm Hữu Nam"
-                fill
-                className="object-cover"
-                sizes="36px"
-              />
-            </div>
-            <div>
-              <p className="font-bold text-xs sm:text-sm text-text-primary">
-                Phạm Hữu Nam
-              </p>
-              <p className="text-[11px] text-text-tertiary">HCMUS Student</p>
+    <>
+      {/* Zen / Focus Mode: Clean, distraction-free reading canvas */}
+      {isZenMode ? (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-background animate-fadeIn">
+          {/* Top subtle bar to exit */}
+          <div className="sticky top-0 z-10 bg-background/90 backdrop-blur-md border-b border-border/80 px-4 py-2.5">
+            <div className="max-w-2xl mx-auto flex items-center justify-between text-xs">
+              <span className="text-text-tertiary">Chế độ đọc tập trung (nhấn Esc để thoát)</span>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => handleSetFontFamily(fontFamily === "sans" ? "serif" : "sans")}
+                  className="px-2 py-1 rounded bg-secondary text-text-secondary hover:text-text-primary"
+                >
+                  {fontFamily === "sans" ? "Đổi sang Serif" : "Đổi sang Sans"}
+                </button>
+                <button
+                  onClick={() => setIsZenMode(false)}
+                  className="px-2.5 py-1 rounded bg-rose-500 text-white font-semibold flex items-center gap-1"
+                >
+                  <X className="w-3.5 h-3.5" />
+                  <span>Thoát</span>
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-medium text-text-tertiary">
-            <span className="flex items-center gap-1.5 bg-primary/10 text-primary px-2.5 py-0.5 rounded-full font-semibold text-[11px]">
-              <Calendar className="w-3 h-3" />
-              {post.date}
-            </span>
-            <span className="flex items-center gap-1.5 bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2.5 py-0.5 rounded-full font-semibold text-[11px]">
-              <Clock className="w-3 h-3" />
-              {post.readingTime}
-            </span>
-          </div>
-        </div>
+          <main className="max-w-2xl mx-auto px-6 py-10 space-y-6">
+            <div className="space-y-3 pb-6 border-b border-border">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-text-primary leading-tight">
+                {post.title}
+              </h1>
+              <div className="flex items-center gap-3 text-xs text-text-tertiary">
+                <span>{post.date}</span>
+                <span>•</span>
+                <span>{post.readingTime}</span>
+              </div>
+            </div>
 
-        {/* Title */}
-        <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-text-primary tracking-tight leading-tight mb-6">
-          {post.title}
-        </h1>
-
-        {/* Cover Image */}
-        {post.image && (
-          <div className="relative h-56 sm:h-72 md:h-80 w-full rounded-2xl overflow-hidden mb-8 border border-border shadow-xs">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 896px) 100vw, 896px"
+            <div
+              className={`prose-custom max-w-none ${fontFamilyClass} ${fontSizeClasses[fontSize]}`}
+              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
             />
-          </div>
-        )}
-
-        {/* Markdown Content Area with Custom Font Size and Family */}
-        <div
-          className={`prose-custom max-w-none ${fontFamilyClass} ${fontSizeClasses[fontSize]}`}
-          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-        />
-
-        {/* Post Tags */}
-        {post.tags && post.tags.length > 0 && (
-          <div className="mt-8 pt-5 border-t border-border flex items-center gap-2 flex-wrap">
-            <Tag className="w-3.5 h-3.5 text-text-tertiary" />
-            <span className="text-xs text-text-tertiary font-medium">Chủ đề:</span>
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs font-semibold px-2.5 py-0.5 rounded-lg bg-secondary text-text-secondary"
-              >
-                #{tag}
-              </span>
-            ))}
-          </div>
-        )}
-      </article>
-
-      {/* Reactions Section */}
-      <div className={isZenMode ? "max-w-3xl mx-auto" : ""}>
-        <BlogReactions
-          slug={post.slug}
-          onScrollToComments={scrollToComments}
-          commentCount={commentCount}
-        />
-      </div>
-
-      {/* Prev / Next Article Navigation (Only outside Zen Mode) */}
-      {!isZenMode && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-          {prevPost ? (
+          </main>
+        </div>
+      ) : (
+        /* Normal 2-Column Responsive Layout */
+        <div className="space-y-6">
+          {/* Back link */}
+          <div>
             <Link
-              href={`/blog/${prevPost.slug}`}
-              className="card-interactive rounded-2xl p-4 flex flex-col justify-between group"
+              href="/blog"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl card text-xs font-semibold text-text-secondary hover:text-primary hover:border-primary/40 transition-all shadow-xs group"
             >
-              <span className="text-[11px] font-semibold text-text-tertiary flex items-center gap-1">
-                ← Bài trước
-              </span>
-              <p className="font-bold text-xs sm:text-sm text-text-primary mt-1 line-clamp-1 group-hover:text-primary transition-colors">
-                {prevPost.title}
-              </p>
+              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+              <span>Tất cả bài viết</span>
             </Link>
-          ) : <div />}
+          </div>
 
-          {nextPost ? (
-            <Link
-              href={`/blog/${nextPost.slug}`}
-              className="card-interactive rounded-2xl p-4 flex flex-col justify-between text-right group sm:items-end"
-            >
-              <span className="text-[11px] font-semibold text-text-tertiary flex items-center gap-1 justify-end">
-                Bài tiếp theo →
-              </span>
-              <p className="font-bold text-xs sm:text-sm text-text-primary mt-1 line-clamp-1 group-hover:text-primary transition-colors">
-                {nextPost.title}
-              </p>
-            </Link>
-          ) : <div />}
+          {/* 2-Column Desktop Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Main Article (Left / Center) */}
+            <article className="lg:col-span-8 card rounded-2xl p-5 sm:p-7 md:p-8 space-y-6">
+              {/* Clean Byline */}
+              <div className="flex items-center justify-between text-xs text-text-tertiary border-b border-border pb-4">
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold text-text-primary">Phạm Hữu Nam</span>
+                  <span>•</span>
+                  <span>HCMUS</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="flex items-center gap-1">
+                    <Calendar className="w-3.5 h-3.5" />
+                    {post.date}
+                  </span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5" />
+                    {post.readingTime}
+                  </span>
+                </div>
+              </div>
+
+              {/* Title */}
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-text-primary tracking-tight leading-tight">
+                {post.title}
+              </h1>
+
+              {/* Cover Image */}
+              {post.image && (
+                <div className="relative h-52 sm:h-72 w-full rounded-xl overflow-hidden border border-border">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 896px) 100vw, 720px"
+                  />
+                </div>
+              )}
+
+              {/* Content with dynamic font size and family */}
+              <div
+                className={`prose-custom max-w-none ${fontFamilyClass} ${fontSizeClasses[fontSize]}`}
+                dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+              />
+
+              {/* Tags */}
+              {post.tags && post.tags.length > 0 && (
+                <div className="pt-4 border-t border-border flex items-center gap-2 flex-wrap text-xs">
+                  <Tag className="w-3.5 h-3.5 text-text-tertiary" />
+                  <span className="text-text-tertiary">Chủ đề:</span>
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-0.5 rounded-md bg-secondary text-text-secondary text-[11px] font-semibold"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Reactions */}
+              <div className="pt-4 border-t border-border">
+                <BlogReactions
+                  slug={post.slug}
+                  onScrollToComments={scrollToComments}
+                  commentCount={commentCount}
+                />
+              </div>
+
+              {/* Prev / Next */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                {prevPost ? (
+                  <Link
+                    href={`/blog/${prevPost.slug}`}
+                    className="card-interactive rounded-xl p-3.5 flex flex-col justify-between group text-xs"
+                  >
+                    <span className="text-[11px] text-text-tertiary">← Bài trước</span>
+                    <p className="font-semibold text-text-primary mt-1 truncate group-hover:text-primary transition-colors">
+                      {prevPost.title}
+                    </p>
+                  </Link>
+                ) : <div />}
+
+                {nextPost ? (
+                  <Link
+                    href={`/blog/${nextPost.slug}`}
+                    className="card-interactive rounded-xl p-3.5 flex flex-col justify-between text-right group text-xs sm:items-end"
+                  >
+                    <span className="text-[11px] text-text-tertiary">Bài tiếp theo →</span>
+                    <p className="font-semibold text-text-primary mt-1 truncate group-hover:text-primary transition-colors">
+                      {nextPost.title}
+                    </p>
+                  </Link>
+                ) : <div />}
+              </div>
+
+              {/* Comments Section */}
+              <BlogCommentSection
+                slug={post.slug}
+                onCommentCountChange={setCommentCount}
+              />
+            </article>
+
+            {/* Right Hand Side Sticky Sidebar (TOC + Reading Controls) */}
+            <aside className="lg:col-span-4 sticky top-20 space-y-5 hidden lg:block">
+              <div className="card rounded-2xl p-4 space-y-4">
+                <BlogReadingToolbar
+                  fontSize={fontSize}
+                  setFontSize={handleSetFontSize}
+                  fontFamily={fontFamily}
+                  setFontFamily={handleSetFontFamily}
+                  isZenMode={isZenMode}
+                  toggleZenMode={toggleZenMode}
+                />
+              </div>
+
+              <div className="card rounded-2xl p-4">
+                <BlogTableOfContents contentHtml={post.contentHtml} />
+              </div>
+            </aside>
+          </div>
         </div>
       )}
-
-      {/* Comments Section */}
-      <div className={isZenMode ? "max-w-3xl mx-auto" : ""}>
-        <BlogCommentSection
-          slug={post.slug}
-          onCommentCountChange={setCommentCount}
-        />
-      </div>
-    </div>
+    </>
   );
 }

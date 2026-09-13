@@ -24,6 +24,7 @@ const navLinks = [
   { name: "Trang chủ", href: "/", icon: Home },
   { name: "Bài viết", href: "/blog", icon: BookOpen },
   { name: "Âm nhạc", href: "/music", icon: Music },
+  { name: "Trò chuyện", href: "/chat", icon: MessageCircle },
   { name: "Về mình", href: "/about", icon: User },
 ];
 

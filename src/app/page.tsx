@@ -61,7 +61,7 @@ export default function HomePage() {
               </div>
               <div className="mt-4">
                 <h3 className="font-bold text-text-primary text-sm group-hover:text-primary transition-colors">
-                  Về Phạm Hữu Nam
+                  Về tôi
                 </h3>
                 <p className="text-xs text-text-secondary mt-1 leading-relaxed">
                   Khám phá hành trình học tập tại HCMUS, sở thích lập trình và phong cách sống.
@@ -86,7 +86,7 @@ export default function HomePage() {
                   Bộ Sưu Tập Âm Nhạc
                 </h3>
                 <p className="text-xs text-text-secondary mt-1 leading-relaxed">
-                  Hơn 30+ bản nhạc chill, lofi và acoustic được tuyển chọn kỹ lưỡng.
+                  Bộ sưu tập nhạc chill, lofi và acoustic.
                 </p>
               </div>
             </Link>

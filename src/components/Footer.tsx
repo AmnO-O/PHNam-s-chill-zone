@@ -59,6 +59,12 @@ export function Footer() {
                 Music Lounge
               </Link>
               <Link
+                href="/chat"
+                className="text-sm text-text-secondary hover:text-primary transition-colors"
+              >
+                Góc Trò Chuyện (Random & Lounge)
+              </Link>
+              <Link
                 href="/about"
                 className="text-sm text-text-secondary hover:text-primary transition-colors"
               >

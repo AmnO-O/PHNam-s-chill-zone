@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { HealthAssistantChat } from "@/components/HealthAssistantChat";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -53,6 +54,9 @@ export default function RootLayout({
 
           {/* Site-wide Footer */}
           <Footer />
+
+          {/* Global Health Assistant Chat Widget */}
+          <HealthAssistantChat />
         </ThemeProvider>
       </body>
     </html>
