@@ -32,12 +32,15 @@ export function RandomChat() {
   const [isTyping, setIsTyping] = useState(false);
   const [partnerTyping, setPartnerTyping] = useState(false);
   const [onlineWaiters, setOnlineWaiters] = useState(0);
+  const [showMatchToast, setShowMatchToast] = useState(false);
 
   const supabase = createClient();
   const lobbyChannelRef = useRef<any>(null);
   const roomChannelRef = useRef<any>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const matchToastTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
 
   useEffect(() => {
     const user = getOrCreateUserId();
@@ -51,6 +54,7 @@ export function RandomChat() {
   // Clean up channels on unmount
   useEffect(() => {
     return () => {
+      if (matchToastTimeoutRef.current) clearTimeout(matchToastTimeoutRef.current);
       leaveAllChannels();
     };
   }, []);
@@ -71,13 +75,47 @@ export function RandomChat() {
     }
   };
 
+  // Play a success chime when a match is found
+  const ensureAudioContext = () => {
+    if (!audioContextRef.current) {
+      audioContextRef.current = new (window.AudioContext ||
+        (window as any).webkitAudioContext)();
+    }
+    if (audioContextRef.current.state === "suspended") {
+      audioContextRef.current.resume();
+    }
+  };
+
+  const playMatchSound = () => {
+    const ctx = audioContextRef.current;
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const notes = [523.25, 659.25, 783.99, 1046.5];
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = freq;
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      const start = now + i * 0.12;
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(0.25, start + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.35);
+      osc.start(start);
+      osc.stop(start + 0.4);
+    });
+  };
+
   // Start Searching / Matchmaking
   const startSearching = () => {
+    ensureAudioContext();
     leaveAllChannels();
     setMatchStatus("searching");
     setMessages([]);
     setRoomId(null);
     setPartnerName("Người lạ");
+    setShowMatchToast(false);
 
     const lobby = supabase.channel("chill_matchmaking_lobby", {
       config: { presence: { key: userInfo.id } },
@@ -150,6 +188,11 @@ export function RandomChat() {
     setRoomId(activeRoomId);
     setPartnerName(partnerDisplayName);
     setMatchStatus("connected");
+
+    setShowMatchToast(true);
+    playMatchSound();
+    if (matchToastTimeoutRef.current) clearTimeout(matchToastTimeoutRef.current);
+    matchToastTimeoutRef.current = setTimeout(() => setShowMatchToast(false), 4500);
 
     const room = supabase.channel(`chill_chat_${activeRoomId}`, {
       config: { broadcast: { self: false } },
@@ -237,7 +280,20 @@ export function RandomChat() {
   };
 
   return (
-    <div className="card rounded-2xl overflow-hidden flex flex-col h-[560px] sm:h-[600px] border border-border bg-surface">
+    <div className="card relative rounded-2xl overflow-hidden flex flex-col h-[560px] sm:h-[600px] border border-border bg-surface">
+      {/* Match Success Toast */}
+      {showMatchToast && matchStatus === "connected" && (
+        <div className="absolute top-14 left-1/2 -translate-x-1/2 z-20 animate-fadeInDown px-4 w-full max-w-max">
+          <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-surface border border-primary/20 shadow-xl shadow-primary/10 whitespace-nowrap">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+            <Sparkles className="w-4 h-4 text-amber-400" />
+            <span className="text-xs font-bold text-text-primary">
+              Ghép cặp thành công với {partnerName}!
+            </span>
+            <Heart className="w-4 h-4 text-rose-500" />
+          </div>
+        </div>
+      )}
       {/* Header */}
       <div className="px-5 py-3.5 border-b border-border bg-surface/80 backdrop-blur-md flex items-center justify-between">
         <div className="flex items-center gap-2.5">
