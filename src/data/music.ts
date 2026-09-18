@@ -35,6 +35,10 @@ export const rawMusicUrls: string[] = [
   "https://www.youtube.com/watch?v=Y7ix6RITXM0",
   "https://www.youtube.com/watch?v=sdEU-t3uEM4",
   "https://www.youtube.com/watch?v=kOCkne-Bku4",
+  "https://www.youtube.com/watch?v=oxV4qrQozYo",
+  "https://www.youtube.com/watch?v=_XX248bq6Pw",
+  "https://www.youtube.com/watch?v=fXNdur22uQY",
+
 ];
 
 export function getYouTubeId(url: string): string | undefined {

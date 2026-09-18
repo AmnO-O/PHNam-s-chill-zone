@@ -21,7 +21,8 @@ Hoặc là mọi người luôn nói là : "Ghét của nào trời trao của �
 
 Mình nghĩ nó sẽ đều đúng, giả sử mình đang ở trong một tập thể thì mình mà tìm được một bạn giống tính cách thì mình
 sẽ khá là vui vì mình nghĩ mình vừa được tìm một đồng đội. Ngược lại thì, mình thấy một người mà khác tính cách, thì mình
-sẽ khá là ngưỡng mộ ở một số điểm mà mình còn thiếu xót. 
+sẽ khá là ngưỡng mộ ở một số điểm mà mình còn thiếu. 
 
-
-[.... Còn tiếp ]
+Nhưng mà việc tìm người đúng gu thì khó nhỉ. Ngày xưa mình không biết gu là gì, kiểu gu thì mình sẽ liên tưởng đến mức
+uống hơn là liên tưởng đến cái sở thích của mình. Và quay trở lại nửa năm để viết tiếp thì mình vẫn chưa có gì thay đổi lắm
+=)) kinh nghiệm vẫn bằng 0 nhưng mà chắc là có nhiều mẩu chuyện để viết hơn. Thì mình thấy là mọi người hay bảo là "đổi người chứ không đổi gu" nên là việc mọi thường sẽ thường thấy là đa số mọi ex của bạn của bạn sẽ có điểm gì đó tương đồng :)). Cái này thì mình cũng chưa thấy nhiều lắm nhưng mà cũng đã đúng với vài người bạn của mình kiểu crush của những người bạn mình đã phần cũng same same nhau :))).
