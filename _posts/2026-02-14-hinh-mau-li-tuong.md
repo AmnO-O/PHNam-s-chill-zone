@@ -25,4 +25,4 @@ sẽ khá là ngưỡng mộ ở một số điểm mà mình còn thiếu.
 
 Nhưng mà việc tìm người đúng gu thì khó nhỉ. Ngày xưa mình không biết gu là gì, kiểu gu thì mình sẽ liên tưởng đến mức
 uống hơn là liên tưởng đến cái sở thích của mình. Và quay trở lại nửa năm để viết tiếp thì mình vẫn chưa có gì thay đổi lắm
-=)) kinh nghiệm vẫn bằng 0 nhưng mà chắc là có nhiều mẩu chuyện để viết hơn. Thì mình thấy là mọi người hay bảo là "đổi người chứ không đổi gu" nên là việc mọi thường sẽ thường thấy là đa số mọi ex của bạn của bạn sẽ có điểm gì đó tương đồng :)). Cái này thì mình cũng chưa thấy nhiều lắm nhưng mà cũng đã đúng với vài người bạn của mình kiểu crush của những người bạn mình đã phần cũng same same nhau :))).
+=)) kinh nghiệm vẫn bằng 0 nhưng mà chắc là có nhiều mẩu chuyện để viết hơn. Thì mình thấy là mọi người hay bảo là "đổi người chứ không đổi gu" nên là việc mọi thường sẽ thường thấy là đa số mọi ex của bạn của bạn sẽ có điểm gì đó tương đồng :)). Cái này thì mình cũng chưa thấy nhiều lắm nhưng mà cũng đã đúng với vài người bạn của mình kiểu crush của những người bạn mình đã phần cũng same same nhau :))). 
